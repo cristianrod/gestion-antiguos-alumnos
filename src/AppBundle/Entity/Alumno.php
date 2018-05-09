@@ -128,4 +128,19 @@ class Alumno implements UserInterface, \Serializable
         $this->isActive = $isActive;
     }
 
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
 }
