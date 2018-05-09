@@ -32,6 +32,12 @@ class SecurityController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/register", name="register")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         // 1) build the form
@@ -55,7 +61,7 @@ class SecurityController extends Controller
         }
 
         return $this->render(
-            'registration/register.html.twig',
+            'security/register.html.twig',
             array('form' => $form->createView())
         );
     }
