@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use AppBundle\Entity\Alumno;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -42,6 +43,9 @@ class AlumnoType extends AbstractType
             ])
             ->add('movil', TextType::class, [
                 'label' => 'Móvil'
+            ])
+            ->add('fichero', FileType::class, [
+                'label' => 'Fotografía'
             ])
             ->add('registrarse', SubmitType::class, [
                 'label' => 'Registrarse',

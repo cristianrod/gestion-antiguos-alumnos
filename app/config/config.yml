@@ -66,3 +66,11 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        alumnos_foto:
+            uri_prefix: /subidas/fotos/alumnos
+            upload_destination: '%kernel.project_dir%/web/subidas/fotos/alumnos'

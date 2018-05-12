@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}Incio - Alumnos{% endblock %}
+{% block container %}
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr class="text-center">
+            <th scope="col">NIF</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fotografia</th>
+            <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for alumno in alumnos %}
+            <tr class="text-center">
+                <th scope="row">{{ alumno.nif }}</th>
+                <td>{{ alumno.nombre }}</td>
+                <td>{{ alumno.apellido1 }} {{ alumno.apellido2 }}</td>
+                <td>{{ alumno.email }}</td>
+                <td><img src="{{ asset(alumno.fotografia is null ? 'build/images/user.png' : 'subidas/fotos/alumnos/' ~ alumno.fotografia) }}" style="width: 30px; height: 30px;"></td>
+                <td>
+                    <a role="button" href="{{ path('alumnos_show', {'id': alumno.id}) }}" class="btn btn-primary mb-1 mb-sm-1 mb-md-0">Ver</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if alumnos.haveToPaginate %}
+        <nav>
+            {{ pagerfanta(alumnos, 'twitter_bootstrap4_translated', {'omitFirstPage': true, 'pageParameter': '[p]', 'css_container_class': 'pagination justify-content-center'}) }}
+        </nav>
+    {% endif %}
+{% endblock %}

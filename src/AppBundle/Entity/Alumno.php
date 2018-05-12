@@ -11,14 +11,17 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Table(name="alumnos")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AlumnoRespository")
  * @UniqueEntity("username")
  * @UniqueEntity("nif")
+ * @Vich\Uploadable
  */
 class Alumno implements UserInterface, \Serializable
 {
@@ -96,6 +99,38 @@ class Alumno implements UserInterface, \Serializable
      * )
      */
     private $movil;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $fotografia;
+    /**
+     * @Vich\UploadableField(mapping="alumnos_foto", fileNameProperty="fotografia")
+     * @Assert\Image()
+     */
+    private $fichero;
+    /**
+     * @return mixed
+     */
+    public function getFichero(): ?File
+    {
+        return $this->fichero;
+    }
+
+    /**
+     * @param null $foto
+     */
+    public function setFichero($foto = null): void
+    {
+        $this->fichero = $foto;
+        if (null !== $foto) {
+            $this->fechaSubida = new \DateTimeImmutable();
+        }
+    }
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $fechaSubida;
 
     public function __construct()
     {
@@ -274,5 +309,28 @@ class Alumno implements UserInterface, \Serializable
     public function setMovil($movil)
     {
         $this->movil = $movil;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFotografia()
+    {
+        return $this->fotografia;
+    }
+    /**
+     * @param mixed $fotografia
+     */
+    public function setFotografia($fotografia): void
+    {
+        $this->fotografia = $fotografia;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

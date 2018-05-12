@@ -10,9 +10,12 @@ namespace AppBundle\Repository;
 
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
-class AlumnoRespository extends EntityRepository implements  UserLoaderInterface
+class AlumnoRespository extends EntityRepository implements UserLoaderInterface
 {
     public function loadUserByUsername($username)
     {
@@ -22,5 +25,24 @@ class AlumnoRespository extends EntityRepository implements  UserLoaderInterface
             ->setParameter('email', $username)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    public function findByNombre(int $pagina): Pagerfanta
+    {
+        $query = $this->createQueryBuilder('a')
+            ->orderBy('a.nombre', 'ASC')
+            ->getQuery()
+        ;
+
+        return $this->paginacion($query, $pagina);
+    }
+
+    public function paginacion(Query $query, int $pagina)
+    {
+        $paginacion = new Pagerfanta(new DoctrineORMAdapter($query));
+        $paginacion = $paginacion->setMaxPerPage(5);
+        $paginacion = $paginacion->setCurrentPage($pagina);
+
+        return $paginacion;
     }
 }
