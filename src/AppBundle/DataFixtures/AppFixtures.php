@@ -9,7 +9,7 @@
 namespace AppBundle\DataFixtures;
 
 
-use AppBundle\Entity\Alumno;
+use AppBundle\Entity\Usuario;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -25,14 +25,14 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $alumno = new Alumno();
+        $usuario = new Usuario();
 
-        $alumno->setEmail('alumno@gmail.com');
-        $alumno->setUsername('alumno');
-        $alumno->setIsActive(true);
-        $alumno->setPassword($this->encoder->encodePassword($alumno, 'usuario'));
+        $usuario->setEmail('usuario@usuario.com');
+        $usuario->setUsername('usuario');
+        $usuario->setIsActive(true);
+        $usuario->setPassword($this->encoder->encodePassword($usuario, 'usuario'));
 
-        $manager->persist($alumno);
+        $manager->persist($usuario);
 
         $manager->flush();
     }

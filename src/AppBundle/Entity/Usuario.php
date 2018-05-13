@@ -2,149 +2,161 @@
 /**
  * Created by PhpStorm.
  * User: Cristian
- * Date: 12/05/2018
- * Time: 19:41
+ * Date: 13/05/2018
+ * Time: 17:20
  */
 
 namespace AppBundle\Entity;
+
+
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- *
+ * @ORM\Table(name="usuarios")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  * Class Usuario
  * @package AppBundle\Entity
- * @ORM\MappedSuperclass
- * @UniqueEntity("nif")
  */
-class Usuario
+class Usuario implements UserInterface, \Serializable
 {
     /**
-     * @ORM\Column(type="string", unique=true)
-     * @Assert\Regex(
-     *     pattern="/^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i"
-     * )
-     * @Assert\NotBlank()
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $nif;
+    private $id;
 
     /**
-     * @Assert\Regex(
-     *     pattern="/[0-9]/",
-     *     match=false
-     * )
-     * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=25, unique=true)
      */
-    private $nombre;
+    private $username;
 
     /**
-     * @Assert\Regex(
-     *     pattern="/[0-9]/",
-     *     match=false
-     * )
-     * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=64)
      */
-    private $apellido1;
+    private $password;
 
     /**
-     * @Assert\Regex(
-     *     pattern="/[0-9]/",
-     *     match=false
-     * )
-     * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=254, unique=true)
      */
-    private $apellido2;
+    private $email;
 
     /**
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank()
-     * @Assert\Regex(
-     *     pattern="/^(\+34|0034|34)?[6|7][0-9]{8}$/"
-     * )
+     * @ORM\Column(name="is_active", type="boolean")
      */
-    private $movil;
+    private $isActive;
 
-    /**
-     * @return mixed
-     */
-    public function getNif()
+    public function __construct()
     {
-        return $this->nif;
+        $this->isActive = true;
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid('', true));
     }
 
-    /**
-     * @param mixed $nif
-     */
-    public function setNif($nif)
+    public function getUsername()
     {
-        $this->nif = $nif;
+        return $this->username;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getNombre()
+    public function getSalt()
     {
-        return $this->nombre;
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
     }
 
-    /**
-     * @param mixed $nombre
-     */
-    public function setNombre($nombre)
+    public function getPassword()
     {
-        $this->nombre = $nombre;
+        return $this->password;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getApellido1()
+    public function getRoles()
     {
-        return $this->apellido1;
+        return array('ROLE_USER');
     }
 
-    /**
-     * @param mixed $apellido1
-     */
-    public function setApellido1($apellido1)
+    public function eraseCredentials()
     {
-        $this->apellido1 = $apellido1;
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized, ['allowed_classes' => false]);
     }
 
     /**
      * @return mixed
      */
-    public function getApellido2()
+    public function getEmail()
     {
-        return $this->apellido2;
+        return $this->email;
     }
 
     /**
-     * @param mixed $apellido2
+     * @param mixed $email
      */
-    public function setApellido2($apellido2)
+    public function setEmail($email): void
     {
-        $this->apellido2 = $apellido2;
+        $this->email = $email;
     }
 
     /**
      * @return mixed
      */
-    public function getMovil()
+    public function getisActive()
     {
-        return $this->movil;
+        return $this->isActive;
     }
 
     /**
-     * @param mixed $movil
+     * @param mixed $isActive
      */
-    public function setMovil($movil)
+    public function setIsActive($isActive): void
     {
-        $this->movil = $movil;
+        $this->isActive = $isActive;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

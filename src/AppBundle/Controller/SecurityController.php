@@ -3,7 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Alumno;
+use AppBundle\Entity\Usuario;
 use AppBundle\Form\AlumnoType;
+use AppBundle\Form\UsuarioType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,20 +43,20 @@ class SecurityController extends Controller
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         // 1) build the form
-        $alumno = new Alumno();
-        $form = $this->createForm(AlumnoType::class, $alumno);
+        $usuario = new Usuario();
+        $form = $this->createForm(UsuarioType::class, $usuario);
 
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
             // 3) Encode the password (you could also do this via Doctrine listener)
-            $password = $passwordEncoder->encodePassword($alumno, $alumno->getPassword());
-            $alumno->setPassword($password);
+            $password = $passwordEncoder->encodePassword($usuario, $usuario->getPassword());
+            $usuario->setPassword($password);
 
             // 4) save the User!
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($alumno);
+            $entityManager->persist($usuario);
             $entityManager->flush();
 
             return $this->redirectToRoute('login');

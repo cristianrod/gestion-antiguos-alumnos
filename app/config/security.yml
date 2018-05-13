@@ -2,14 +2,14 @@
 # https://symfony.com/doc/current/security.html
 security:
     encoders:
-        AppBundle\Entity\Alumno:
+        AppBundle\Entity\Usuario:
             algorithm: bcrypt
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         db_provider:
             entity:
-                class: AppBundle:Alumno
+                class: AppBundle:Usuario
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs

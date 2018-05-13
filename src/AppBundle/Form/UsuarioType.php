@@ -2,10 +2,9 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Alumno;
+use AppBundle\Entity\Usuario;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -13,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AlumnoType extends AbstractType
+class UsuarioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,24 +28,6 @@ class AlumnoType extends AbstractType
                 'first_options'  => array('label' => 'Contraseña'),
                 'second_options' => array('label' => 'Repetir Contraseña'),
             ))
-            ->add('nif', TextType::class, [
-                'label' => 'NIF',
-            ])
-            ->add('nombre', TextType::class, [
-                'label' => 'Nombre',
-            ])
-            ->add('apellido1', TextType::class, [
-                'label' => '1º Apellido'
-            ])
-            ->add('apellido2', TextType::class, [
-                'label' => '2º Apellido',
-            ])
-            ->add('movil', TextType::class, [
-                'label' => 'Móvil'
-            ])
-            ->add('fichero', FileType::class, [
-                'label' => 'Fotografía'
-            ])
             ->add('registrarse', SubmitType::class, [
                 'label' => 'Registrarse',
                 'attr' => [
@@ -58,13 +39,13 @@ class AlumnoType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => Alumno::class,
-        ));
+        $resolver->setDefaults([
+            'data_class' => Usuario::class,
+        ]);
     }
 
     public function getBlockPrefix()
     {
-        return 'app_bundle_alumno_type';
+        return 'app_bundle_usuario_type';
     }
 }
