@@ -10,6 +10,7 @@ namespace AppBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -43,6 +44,11 @@ class Usuario implements UserInterface, \Serializable
     private $email;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $esAlumno;
+
+    /**
      * @ORM\Column(name="is_active", type="boolean")
      */
     private $isActive;
@@ -73,7 +79,11 @@ class Usuario implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        $roles = [new Role('ROLE_USER')];
+        if (!$this->getEsAlumno()){
+            $roles[] = new Role('ROLE_ADMIN');
+        }
+        return $roles;
     }
 
     public function eraseCredentials()
@@ -158,5 +168,21 @@ class Usuario implements UserInterface, \Serializable
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEsAlumno()
+    {
+        return $this->esAlumno;
+    }
+
+    /**
+     * @param mixed $esAlumno
+     */
+    public function setEsAlumno($esAlumno): void
+    {
+        $this->esAlumno = $esAlumno;
     }
 }

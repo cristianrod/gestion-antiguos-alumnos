@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Usuario;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -28,6 +29,15 @@ class UsuarioType extends AbstractType
                 'first_options'  => array('label' => 'Contraseña'),
                 'second_options' => array('label' => 'Repetir Contraseña'),
             ))
+            ->add('esAlumno', ChoiceType::class, [
+                'label' => 'Tipo de usuario',
+                'choices' => [
+                    'Alumno' => true,
+                    'Profesor' => false
+                ],
+                'expanded' => true,
+                'data' => 0,
+            ])
             ->add('registrarse', SubmitType::class, [
                 'label' => 'Registrarse',
                 'attr' => [
