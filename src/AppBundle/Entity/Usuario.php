@@ -11,14 +11,17 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Table(name="usuarios")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  * @UniqueEntity("nif")
+ * @Vich\Uploadable
  * Class Usuario
  * @package AppBundle\Entity
  */
@@ -103,6 +106,37 @@ class Usuario implements UserInterface, \Serializable
      * )
      */
     private $movil;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $fotografia;
+    /**
+     * @Vich\UploadableField(mapping="usuarios_foto", fileNameProperty="fotografia")
+     * @Assert\Image()
+     */
+    private $fichero;
+    /**
+     * @return mixed
+     */
+    public function getFichero(): ?File
+    {
+        return $this->fichero;
+    }
+    /**
+     * @param null $foto
+     */
+    public function setFichero($foto = null): void
+    {
+        $this->fichero = $foto;
+        if (null !== $foto) {
+            $this->fechaSubida = new \DateTimeImmutable();
+        }
+    }
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $fechaSubida;
 
 
     public function __construct()
@@ -319,5 +353,21 @@ class Usuario implements UserInterface, \Serializable
     public function setMovil($movil): void
     {
         $this->movil = $movil;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFotografia()
+    {
+        return $this->fotografia;
+    }
+
+    /**
+     * @param mixed $fotografia
+     */
+    public function setFotografia($fotografia): void
+    {
+        $this->fotografia = $fotografia;
     }
 }

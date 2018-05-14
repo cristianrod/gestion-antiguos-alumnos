@@ -6,6 +6,7 @@ use AppBundle\Entity\Usuario;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -43,6 +44,9 @@ class UsuarioType extends AbstractType
             ))
             ->add('movil', TextType::class, [
                 'label' => 'Móvil'
+            ])
+            ->add('fichero', FileType::class, [
+                'label' => 'Fotografía'
             ])
             ->add('esAlumno', ChoiceType::class, [
                 'label' => 'Tipo de usuario',

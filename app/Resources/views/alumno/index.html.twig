@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Incio - Alumnos{% endblock %}
+{% block title %}Inicio - Alumnos{% endblock %}
 {% block container %}
     <table class="table table-bordered table-hover">
         <thead>
@@ -21,7 +21,7 @@
                 <td>{{ alumno.email }}</td>
                 <td><img src="{{ asset(alumno.fotografia is null ? 'build/images/user.png' : 'subidas/fotos/alumnos/' ~ alumno.fotografia) }}" style="width: 30px; height: 30px;"></td>
                 <td>
-                    <a role="button" href="{{ path('alumnos_show', {'id': alumno.id}) }}" class="btn btn-primary mb-1 mb-sm-1 mb-md-0">Ver</a>
+                    <a role="button" href="#" class="btn btn-primary mb-1 mb-sm-1 mb-md-0">Ver</a>
                 </td>
             </tr>
         {% endfor %}
