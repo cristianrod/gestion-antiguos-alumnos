@@ -10,12 +10,15 @@ namespace AppBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="usuarios")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
+ * @UniqueEntity("nif")
  * Class Usuario
  * @package AppBundle\Entity
  */
@@ -53,6 +56,55 @@ class Usuario implements UserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @ORM\Column(type="string", unique=true)
+     * @Assert\Regex(
+     *     pattern="/^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i"
+     * )
+     * @Assert\NotBlank()
+     */
+    private $nif;
+
+    /**
+     * @Assert\Regex(
+     *     pattern="/[0-9]/",
+     *     match=false
+     * )
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=50)
+     */
+    private $nombre;
+
+    /**
+     * @Assert\Regex(
+     *     pattern="/[0-9]/",
+     *     match=false
+     * )
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=50)
+     */
+    private $apellido1;
+
+    /**
+     * @Assert\Regex(
+     *     pattern="/[0-9]/",
+     *     match=false
+     * )
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=50)
+     */
+    private $apellido2;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     pattern="/^(\+34|0034|34)?[6|7][0-9]{8}$/"
+     * )
+     */
+    private $movil;
+
+
     public function __construct()
     {
         $this->isActive = true;
@@ -80,7 +132,10 @@ class Usuario implements UserInterface, \Serializable
     public function getRoles()
     {
         $roles = [new Role('ROLE_USER')];
-        if (!$this->getEsAlumno()){
+        if ($this->getEsAlumno()){
+            $roles[] = new Role('ROLE_ALUMNO');
+        }
+        else{
             $roles[] = new Role('ROLE_ADMIN');
         }
         return $roles;
@@ -184,5 +239,85 @@ class Usuario implements UserInterface, \Serializable
     public function setEsAlumno($esAlumno): void
     {
         $this->esAlumno = $esAlumno;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNif()
+    {
+        return $this->nif;
+    }
+
+    /**
+     * @param mixed $nif
+     */
+    public function setNif($nif): void
+    {
+        $this->nif = $nif;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre): void
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApellido1()
+    {
+        return $this->apellido1;
+    }
+
+    /**
+     * @param mixed $apellido1
+     */
+    public function setApellido1($apellido1): void
+    {
+        $this->apellido1 = $apellido1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApellido2()
+    {
+        return $this->apellido2;
+    }
+
+    /**
+     * @param mixed $apellido2
+     */
+    public function setApellido2($apellido2): void
+    {
+        $this->apellido2 = $apellido2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMovil()
+    {
+        return $this->movil;
+    }
+
+    /**
+     * @param mixed $movil
+     */
+    public function setMovil($movil): void
+    {
+        $this->movil = $movil;
     }
 }
