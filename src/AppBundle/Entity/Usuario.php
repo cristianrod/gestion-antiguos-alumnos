@@ -138,6 +138,11 @@ class Usuario implements UserInterface, \Serializable
      */
     private $fechaSubida;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Curriculum", mappedBy="alumno")
+     */
+    private $curriculum;
+
 
     public function __construct()
     {

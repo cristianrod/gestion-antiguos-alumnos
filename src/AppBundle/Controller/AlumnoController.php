@@ -23,7 +23,7 @@ class AlumnoController extends Controller
     {
         $pagina = $request->query->getInt('p', 1);
         $alumnos = $this->getDoctrine()->getRepository(Usuario::class);
-        $alumnos = $alumnos->findByNombre($pagina);
+        $alumnos = $alumnos->findAlumnoByNombre($pagina);
 
         return $this->render("alumno/index.html.twig", [
             'alumnos' => $alumnos,

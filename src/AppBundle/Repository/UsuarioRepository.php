@@ -27,9 +27,10 @@ class UsuarioRepository extends EntityRepository implements UserLoaderInterface
             ->getOneOrNullResult();
     }
 
-    public function findByNombre(int $pagina): Pagerfanta
+    public function findAlumnoByNombre(int $pagina): Pagerfanta
     {
         $query = $this->createQueryBuilder('a')
+            ->where('a.esAlumno = true')
             ->orderBy('a.nombre', 'ASC')
             ->getQuery()
         ;
