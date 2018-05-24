@@ -74,3 +74,20 @@ vich_uploader:
         usuarios_foto:
             uri_prefix: /subidas/fotos/usuarios
             upload_destination: '%kernel.project_dir%/web/subidas/fotos/usuarios'
+
+easy_admin:
+    site_name: 'Antiguos Alumnos'
+    entities:
+        Usuario:
+            class: AppBundle\Entity\Usuario
+            list:
+                dql_filter: 'entity.esAlumno = true'
+            form:
+              fields:
+                  - { property: 'username', label: 'Usuario' }
+                  - { property: 'email', type: 'email', label: 'Email' }
+                  - { property: 'nombre', label: 'Nombre' }
+                  - { property: 'apellido1', label: '1º Apellido' }
+                  - { property: 'apellido2', label: '2º Apellido' }
+                  - { property: 'movil', label: 'Móvil' }
+                  - { property: 'fichero', type: 'vich_image', label: 'Fotografía' }

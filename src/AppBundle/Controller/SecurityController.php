@@ -2,9 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Alumno;
 use AppBundle\Entity\Usuario;
-use AppBundle\Form\AlumnoType;
 use AppBundle\Form\UsuarioType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
