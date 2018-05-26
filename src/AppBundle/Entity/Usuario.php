@@ -8,14 +8,13 @@
 
 namespace AppBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\Role\Role;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Table(name="usuarios")
@@ -25,39 +24,19 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * Class Usuario
  * @package AppBundle\Entity
  */
-class Usuario implements UserInterface, \Serializable
+class Usuario extends BaseUser
 {
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string", length=25, unique=true)
-     */
-    private $username;
-
-    /**
-     * @ORM\Column(type="string", length=64)
-     */
-    private $password;
-
-    /**
-     * @ORM\Column(type="string", length=254, unique=true)
-     */
-    private $email;
+    protected $id;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $esAlumno;
-
-    /**
-     * @ORM\Column(name="is_active", type="boolean")
-     */
-    private $isActive;
 
     /**
      * @ORM\Column(type="string", unique=true)
@@ -143,29 +122,9 @@ class Usuario implements UserInterface, \Serializable
      */
     private $curriculum;
 
-
     public function __construct()
     {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid('', true));
-    }
-
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    public function getSalt()
-    {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
-        return null;
-    }
-
-    public function getPassword()
-    {
-        return $this->password;
+        parent::__construct();
     }
 
     public function getRoles()
@@ -178,82 +137,6 @@ class Usuario implements UserInterface, \Serializable
             $roles[] = new Role('ROLE_ADMIN');
         }
         return $roles;
-    }
-
-    public function eraseCredentials()
-    {
-    }
-
-    /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt,
-        ));
-    }
-
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt
-            ) = unserialize($serialized, ['allowed_classes' => false]);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email): void
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getisActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param mixed $isActive
-     */
-    public function setIsActive($isActive): void
-    {
-        $this->isActive = $isActive;
-    }
-
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username): void
-    {
-        $this->username = $username;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password): void
-    {
-        $this->password = $password;
     }
 
     /**
@@ -375,4 +258,6 @@ class Usuario implements UserInterface, \Serializable
     {
         $this->fotografia = $fotografia;
     }
+
+
 }

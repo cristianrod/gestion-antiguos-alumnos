@@ -9,6 +9,8 @@ parameters:
     locale: es
 
 framework:
+    templating:
+        engines: ['twig']
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
@@ -91,3 +93,11 @@ easy_admin:
                   - { property: 'apellido2', label: '2º Apellido' }
                   - { property: 'movil', label: 'Móvil' }
                   - { property: 'fichero', type: 'vich_image', label: 'Fotografía' }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\Usuario
+    from_email:
+        address: "iessansebastian@mail.com"
+        sender_name: "IES San Sebastián"
