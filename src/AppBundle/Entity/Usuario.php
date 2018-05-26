@@ -127,18 +127,6 @@ class Usuario extends BaseUser
         parent::__construct();
     }
 
-    public function getRoles()
-    {
-        $roles = [new Role('ROLE_USER')];
-        if ($this->getEsAlumno()){
-            $roles[] = new Role('ROLE_ALUMNO');
-        }
-        else{
-            $roles[] = new Role('ROLE_ADMIN');
-        }
-        return $roles;
-    }
-
     /**
      * @return mixed
      */

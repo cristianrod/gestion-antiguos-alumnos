@@ -9,31 +9,44 @@
 namespace AppBundle\DataFixtures;
 
 
-use AppBundle\Entity\Usuario;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class AppFixtures extends Fixture
+class AppFixtures extends Fixture implements ContainerAwareInterface
 {
-    private $encoder;
 
-    public function __construct(UserPasswordEncoderInterface $encoder)
-    {
-        $this->encoder = $encoder;
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setContainer(ContainerInterface $container = null){
+        $this->container = $container;
     }
 
     public function load(ObjectManager $manager)
     {
-        $usuario = new Usuario();
+        $userManager = $this->container->get('fos_user.user_manager');
 
-        $usuario->setEmail('usuario@usuario.com');
-        $usuario->setUsername('usuario');
-        $usuario->setIsActive(true);
-        $usuario->setPassword($this->encoder->encodePassword($usuario, 'usuario'));
+        $usuario = $userManager->createUser();
 
-        $manager->persist($usuario);
+        $usuario->setEsAlumno(false);
+        $usuario->setNif('49123344A');
+        $usuario->setNombre('admin');
+        $usuario->setApellido1('admin');
+        $usuario->setApellido2('admin');
+        $usuario->setMovil('600000000');
+        $usuario->setEnabled(true);
+        $usuario->setRoles(['ROLE_SUPER_ADMIN']);
+        $usuario->setEmail('admin@admin.com');
+        $usuario->setUsername('admin');
+        $usuario->setPlainPassword('admin');
 
-        $manager->flush();
+        $userManager->updateUser($usuario, true);
     }
 }

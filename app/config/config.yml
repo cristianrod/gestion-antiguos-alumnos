@@ -82,8 +82,6 @@ easy_admin:
     entities:
         Usuario:
             class: AppBundle\Entity\Usuario
-            list:
-                dql_filter: 'entity.esAlumno = true'
             form:
               fields:
                   - { property: 'username', label: 'Usuario' }
