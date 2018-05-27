@@ -26,7 +26,52 @@ class Curriculum
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $datos;
+
+    /**
      * @ORM\OneToOne(targetEntity="Usuario", inversedBy="curriculum")
      */
     private $alumno;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDatos()
+    {
+        return $this->datos;
+    }
+
+    /**
+     * @param mixed $datos
+     */
+    public function setDatos($datos)
+    {
+        $this->datos = $datos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAlumno()
+    {
+        return $this->alumno;
+    }
+
+    /**
+     * @param mixed $alumno
+     */
+    public function setAlumno($alumno)
+    {
+        $this->alumno = $alumno;
+    }
 }

@@ -247,5 +247,19 @@ class Usuario extends BaseUser
         $this->fotografia = $fotografia;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCurriculum()
+    {
+        return $this->curriculum;
+    }
 
+    /**
+     * @param mixed $curriculum
+     */
+    public function setCurriculum($curriculum)
+    {
+        $this->curriculum = $curriculum;
+    }
 }
