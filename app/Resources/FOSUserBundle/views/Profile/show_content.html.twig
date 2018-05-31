@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    <div class="col-md-3 perfil">
+        <p class="my-2 nombre">{{ app.user.nombre }} {{ app.user.apellido1 }} {{ app.user.apellido2 }}</p>
+        <div class="text-center mx-auto my-2">
+            <img src="{{ asset(app.user.fotografia is null ? 'subidas/fotos/usuarios/defaultuser.jpg' : 'subidas/fotos/usuarios/' ~ app.user.fotografia) }}" class="foto-perfil">
+        </div>
+        <p class="text-center">
+            <span class="badge nombre {{ app.user.esAlumno ? 'badge-primary' : 'badge-danger' }}">{{ app.user.esAlumno ? 'Alumno' : 'Profesor' }}</span>
+        </p>
+        <hr>
+        <p><span class="titulos"><i class="fas fa-user"></i> Usuario: </span>{{ app.user.username }}</p>
+        <p><span class="titulos"><i class="fas fa-phone"></i> Móvil: </span>{{ app.user.movil }}</p>
+    </div>
+    <div class="ml-3 col-md-8 perfil">
+        <p class="my-2 nombre">Curriculum</p>
+
+    </div>
+</div>
