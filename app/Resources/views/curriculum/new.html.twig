@@ -5,10 +5,24 @@
 {% block container %}
     <div class="row">
         <div class="col-md-12">
-            {{ form_start(form, { attr: {novalidate: 'novalidate'}}) }}
-            {{ form_errors(form) }}
-            {{ form_widget(form) }}
+            {{ form_start(form) }}
+            {{ form_row(form.datos) }}
+            {{ form_label(form.experiencias, 'Experiencias') }}
+            <ul id="email-fields-list"
+                data-prototype="{{ form_widget(form.experiencias.vars.prototype)|e }}"
+                data-widget-tags="{{ '<li></li>'|e }}">
+            </ul>
+
+
+            <a href="#"
+               class="add-experiencia"
+               data-list="#email-fields-list">Añadir Experiencia</a>
             {{ form_end(form) }}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/add-collection-widget.js') }}"></script>
 {% endblock %}

@@ -31,6 +31,11 @@ class Curriculum
     private $datos;
 
     /**
+     * @ORM\Column(type="array")
+     */
+    private $experiencias;
+
+    /**
      * @ORM\OneToOne(targetEntity="Usuario", inversedBy="curriculum")
      */
     private $alumno;
@@ -73,5 +78,26 @@ class Curriculum
     public function setAlumno($alumno)
     {
         $this->alumno = $alumno;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExperiencias()
+    {
+        return $this->experiencias;
+    }
+
+    /**
+     * @param mixed $experiencias
+     */
+    public function setExperiencias($experiencias)
+    {
+        $this->experiencias = $experiencias;
+    }
+
+    public function removeExperiencia(Curriculum $experiencia)
+    {
+        $this->experiencias->removeElement($experiencia);
     }
 }
