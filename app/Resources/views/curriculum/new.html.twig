@@ -6,17 +6,69 @@
     <div class="row">
         <div class="col-md-12">
             {{ form_start(form) }}
-            {{ form_row(form.datos) }}
-            {{ form_label(form.experiencias, 'Experiencias') }}
-            <ul id="email-fields-list"
-                data-prototype="{{ form_widget(form.experiencias.vars.prototype)|e }}"
-                data-widget-tags="{{ '<li></li>'|e }}">
-            </ul>
+                {{ form_row(form.direccion) }}
+                {{ form_row(form.poblacion) }}
+                {{ form_row(form.fechanacimiento) }}
+                {{ form_label(form.experiencias, 'Experiencia') }}
+                <ul id="email-fields-list"
+                    data-prototype="{{ form_widget(form.experiencias.vars.prototype)|e }}"
+                    data-widget-tags="{{ '<li></li>'|e }}">
+                </ul>
 
+                <a href="#"
+                   class="add-experiencia m-4"
+                   data-list="#email-fields-list">Añadir Experiencia</a>
 
-            <a href="#"
-               class="add-experiencia"
-               data-list="#email-fields-list">Añadir Experiencia</a>
+                {{ form_label(form.formaciones, 'Formación') }}
+                <ul id="formacion-fields-list"
+                    data-prototype="{{ form_widget(form.formaciones.vars.prototype)|e }}"
+                    data-widget-tags="{{ '<li></li>'|e }}">
+                </ul>
+
+                <a href="#"
+                   class="add-experiencia m-4"
+                   data-list="#formacion-fields-list">Añadir Formación</a>
+
+                {{ form_label(form.lenguajes, 'Lenguajes de programación') }}
+                <ul id="lenguajes-fields-list"
+                    data-prototype="{{ form_widget(form.lenguajes.vars.prototype)|e }}"
+                    data-widget-tags="{{ '<li></li>'|e }}">
+                </ul>
+
+                <a href="#"
+                   class="add-experiencia m-4"
+                   data-list="#lenguajes-fields-list">Añadir Lenguaje</a>
+
+                {{ form_label(form.sistemas, 'Sistemas Operativos') }}
+                <ul id="sistemas-fields-list"
+                    data-prototype="{{ form_widget(form.sistemas.vars.prototype)|e }}"
+                    data-widget-tags="{{ '<li></li>'|e }}">
+                </ul>
+
+                <a href="#"
+                   class="add-experiencia m-4"
+                   data-list="#sistemas-fields-list">Añadir Sistema Operativo</a>
+
+                {{ form_label(form.basesdedatos, 'Bases de datos') }}
+                <ul id="databases-fields-list"
+                    data-prototype="{{ form_widget(form.basesdedatos.vars.prototype)|e }}"
+                    data-widget-tags="{{ '<li></li>'|e }}">
+                </ul>
+
+                <a href="#"
+                   class="add-experiencia m-4"
+                   data-list="#databases-fields-list">Añadir Base de datos</a>
+
+                {{ form_label(form.programacionweb, 'Programación Web') }}
+                <ul id="proweb-fields-list"
+                    data-prototype="{{ form_widget(form.programacionweb.vars.prototype)|e }}"
+                    data-widget-tags="{{ '<li></li>'|e }}">
+                </ul>
+
+                <a href="#"
+                   class="add-experiencia m-4"
+                   data-list="#proweb-fields-list">Añadir Datos de Programación Web</a>
+
             {{ form_end(form) }}
         </div>
     </div>
