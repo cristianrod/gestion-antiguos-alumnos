@@ -99,3 +99,10 @@ fos_user:
     from_email:
         address: "iessansebastian@mail.com"
         sender_name: "IES San Sebastián"
+
+fos_ck_editor:
+    configs:
+        my_config:
+            toolbar: basic
+            uiColor:                "#ffffff"
+            language: es

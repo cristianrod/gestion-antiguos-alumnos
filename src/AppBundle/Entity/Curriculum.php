@@ -97,6 +97,11 @@ class Curriculum
     private $sexo;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Provincia", inversedBy="curriculums")
+     */
+    private $provincia;
+
+    /**
      * @ORM\OneToOne(targetEntity="Usuario", inversedBy="curriculum")
      */
     private $alumno;
@@ -347,5 +352,20 @@ class Curriculum
     public function setInfoadiccional($infoadiccional)
     {
         $this->infoadiccional = $infoadiccional;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProvincia()
+    {
+        return $this->provincia;
+    }
+    /**
+     * @param mixed $provincia
+     */
+    public function setProvincia($provincia)
+    {
+        $this->provincia = $provincia;
     }
 }
