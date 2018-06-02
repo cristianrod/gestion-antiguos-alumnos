@@ -19,13 +19,13 @@ class SecurityController extends Controller
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
-        // 1) build the form
+
         $usuario = new Usuario();
         $form = $this->createForm(UsuarioType::class, $usuario);
-        // 2) handle the submit (will only happen on POST)
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // 3) Encode the password (you could also do this via Doctrine listener)
+
             $password = $passwordEncoder->encodePassword($usuario, $usuario->getPassword());
             $usuario->setPassword($password);
             if(!$usuario->getEsAlumno()){
@@ -34,7 +34,7 @@ class SecurityController extends Controller
             else{
                 $usuario->setRoles(['ROLE_ALUMNO']);
             }
-            // 4) save the User!
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($usuario);
             $entityManager->flush();

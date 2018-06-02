@@ -56,7 +56,12 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ path('fos_user_profile_show') }}"><i class="fas fa-user"></i> Perfil</a>
                                     <a class="dropdown-item" href="{{ path('fos_user_change_password') }}"><i class="fas fa-key"></i> Cambiar Contraseña</a>
-                                    <a class="dropdown-item" href="{{ path('curriculum_new') }}"><i class="fas fa-file-alt"></i> Crear Curriculum</a>
+                                    {% if app.user.curriculum %}
+                                        <a class="dropdown-item" href="{{ path("curriculum_edit") }}"><i class="fas fa-file-alt"></i> Editar Curriculum</a>
+                                    {% else %}
+                                        <a class="dropdown-item" href="{{ path('curriculum_new') }}"><i class="fas fa-file-alt"></i> Crear Curriculum</a>
+                                    {% endif %}
+
                                 </div>
                             </li>
                             <li class="nav-item active">
