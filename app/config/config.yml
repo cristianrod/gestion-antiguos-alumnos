@@ -103,6 +103,6 @@ fos_user:
 fos_ck_editor:
     configs:
         my_config:
-            toolbar: basic
-            uiColor:                "#ffffff"
+            toolbar: [ [ "Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Undo", "Redo"], "/", [ "Bold", "Italic", "Strike", "RemoveFormat", "NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "JustifyLeft", "JustifyCenter", "JustifyRight"] ]
+            uiColor: "#ffffff"
             language: es
