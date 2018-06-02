@@ -3,7 +3,11 @@
 namespace AppBundle\Controller;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * @Route("/admin")
+ */
 class AdminController extends BaseAdminController
 {
     public function createNewUserEntity()

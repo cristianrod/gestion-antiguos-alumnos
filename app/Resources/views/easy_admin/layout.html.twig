@@ -1,0 +1,10 @@
+{% extends '@EasyAdmin/default/layout.html.twig' %}
+
+{% block page_title %}Panel de Administración{% endblock %}
+
+{% block user_menu_dropdown %}
+    <li>
+        <a href="{{ path('inicio') }}"><i class="fa fa-home"></i> Volver al Inicio</a>
+    </li>
+    {{ parent() }}
+{% endblock %}
