@@ -11,9 +11,53 @@
         </p>
         <hr>
         <p><span class="titulos"><i class="fas fa-user"></i> Usuario: </span>{{ app.user.username }}</p>
+        <p><span class="titulos"><i class="fas fa-envelope"></i> Email: </span>{{ app.user.email }}</p>
         <p><span class="titulos"><i class="fas fa-phone"></i> Móvil: </span>{{ app.user.movil }}</p>
+        <p><span class="titulos"><i class="fas fa-address-card"></i> Dirección: </span>{{ app.user.curriculum.direccion }}</p>
+        <p><span class="titulos"><i class="fas fa-map-marker-alt"></i> Población: </span>{{ app.user.curriculum.poblacion }} ({{ app.user.curriculum.provincia.nombre }})</p>
+        <p><span class="titulos"><i class="fas fa-calendar-alt"></i> Fecha de Nacimiento: </span>{{ app.user.curriculum.fechanacimiento|date('d-m-Y') }}</p>
+        <p><span class="titulos">{{ app.user.curriculum.sexo == 'Hombre' ? '<i class="fas fa-mars"></i>' : '<i class="fas fa-venus"></i>' }} Sexo: </span>{{ app.user.curriculum.sexo }}</p>
     </div>
-    <div class="ml-3 col-md-8 perfil">
-        <p class="my-2 nombre">Curriculum</p>
+    <div class="ml-3 col-md-8 perfil" style="overflow:auto; height: 625px;">
+        <p class="my-2 nombre">Experiencia Profesional</p>
+        <hr>
+        <p>{{ app.user.curriculum.experiencias | raw }}</p>
+        <hr>
+        <p class="my-2 nombre">Formación Académica</p>
+        <hr>
+        <p>{{ app.user.curriculum.formaciones | raw }}</p>
+        <p class="my-2 nombre">Competencias Profesionales</p>
+        <hr>
+        <p>Lenguajes de programacion</p>
+        <hr>
+        <p>{{ app.user.curriculum.lenguajes | raw }}</p>
+        <hr>
+        <p>Sistemas Operativos</p>
+        <hr>
+        <p>{{ app.user.curriculum.sistemas | raw }}</p>
+        <hr>
+        <p>Bases de Datos</p>
+        <hr>
+        <p>{{ app.user.curriculum.basesdedatos | raw }}</p>
+        <hr>
+        <p>Programación/Diseño Web</p>
+        <hr>
+        <p>{{ app.user.curriculum.programacionweb | raw }}</p>
+        <hr>
+        <p class="my-2 nombre">Competencias Comunicativas</p>
+        <hr>
+        <p>{{ app.user.curriculum.compcomunicativas | raw }}</p>
+        <hr>
+        <p class="my-2 nombre">Competencias Organizativas</p>
+        <hr>
+        <p>{{ app.user.curriculum.comporganizativas | raw }}</p>
+        <hr>
+        <p class="my-2 nombre">Competencias Personales</p>
+        <hr>
+        <p>{{ app.user.curriculum.comppersonales | raw }}</p>
+        <hr>
+        <p class="my-2 nombre">Información Adiccional</p>
+        <hr>
+        <p>{{ app.user.curriculum.infoadiccional | raw }}</p>
     </div>
 </div>
