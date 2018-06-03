@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\CKEditorBundle\FOSCKEditorBundle(),
+            new TFox\MpdfPortBundle\TFoxMpdfPortBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
