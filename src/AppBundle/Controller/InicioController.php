@@ -17,7 +17,7 @@ class InicioController extends Controller
     }
 
     /**
-     * @Route("/profile/pdf/crear")
+     * @Route("/profile/pdf/crear", name="profile_pdf")
      * @throws \Mpdf\MpdfException
      */
     public function pdfAction()
