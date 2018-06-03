@@ -9,7 +9,6 @@
             <th scope="col">Apellidos</th>
             <th scope="col">Email</th>
             <th scope="col">Fotografia</th>
-            <th scope="col">CV</th>
             <th scope="col">Acciones</th>
         </tr>
         </thead>
@@ -21,7 +20,6 @@
                 <td>{{ alumno.apellido1 }} {{ alumno.apellido2 }}</td>
                 <td>{{ alumno.email }}</td>
                 <td><img src="{{ asset(alumno.fotografia is null ? 'build/images/user.png' : 'subidas/fotos/alumnos/' ~ alumno.fotografia) }}" style="width: 30px; height: 30px;"></td>
-                <td>{{ alumno.curriculum ? alumno.curriculum.datos : '' }}</td>
                 <td>
                     <a role="button" href="#" class="btn btn-primary mb-1 mb-sm-1 mb-md-0">Ver</a>
                 </td>
