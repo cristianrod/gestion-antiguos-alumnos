@@ -34,11 +34,11 @@
                     <ul class="navbar-nav ml-auto">
                         {% if is_granted('ROLE_ADMIN') %}
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ path('admin') }}">Administración <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ path('admin') }}"><i class="fas fa-lock"></i> Administración <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item dropdown active">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ app.user.username }}
+                                    <i class="fas fa-user"></i> {{ app.user.username }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ path('fos_user_profile_show') }}"><i class="fas fa-user"></i> Perfil</a>
@@ -46,12 +46,12 @@
                                 </div>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Cerrar Sesión <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
                             </li>
                         {% elseif is_granted('ROLE_USER') %}
                             <li class="nav-item dropdown active">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ app.user.username }}
+                                    <i class="fas fa-user"></i> {{ app.user.username }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ path('fos_user_profile_show') }}"><i class="fas fa-user"></i> Perfil</a>
@@ -65,14 +65,14 @@
                                 </div>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Cerrar Sesión <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
                             </li>
                         {% else %}
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ path('fos_user_security_login') }}">Iniciar Sesión <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ path('fos_user_security_login') }}"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ path('register') }}">Registrate <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ path('register') }}"><i class="fas fa-user-plus"></i> Registrate <span class="sr-only">(current)</span></a>
                             </li>
                         {% endif %}
                     </ul>
