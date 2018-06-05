@@ -14,6 +14,10 @@ class InicioController extends Controller
      */
     public function indexAction()
     {
+        if(!$this->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute('fos_user_profile_show');
+        }
+
         return $this->render('default/index.html.twig');
     }
 
