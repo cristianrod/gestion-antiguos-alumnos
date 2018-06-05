@@ -15,12 +15,12 @@
         <tbody>
         {% for alumno in alumnos %}
             <tr class="text-center">
-                <th scope="row">{{ alumno.nif }}</th>
-                <td>{{ alumno.nombre }}</td>
-                <td>{{ alumno.apellido1 }} {{ alumno.apellido2 }}</td>
-                <td>{{ alumno.email }}</td>
-                <td><img src="{{ asset(alumno.fotografia is null ? 'build/images/user.png' : 'subidas/fotos/alumnos/' ~ alumno.fotografia) }}" style="width: 30px; height: 30px;"></td>
-                <td>
+                <th scope="row" class="align-middle">{{ alumno.nif }}</th>
+                <td class="align-middle">{{ alumno.nombre }}</td>
+                <td class="align-middle">{{ alumno.apellido1 }} {{ alumno.apellido2 }}</td>
+                <td class="align-middle">{{ alumno.email }}</td>
+                <td class="align-middle"><img src="{{ asset(alumno.fotografia is null ? 'web/subidas/fotos/usuarios/defaultuser.jpg' : 'subidas/fotos/usuarios/' ~ alumno.fotografia) }}" style="width: 80px; height: 80px;"></td>
+                <td class="align-middle">
                     <a role="button" href="#" class="btn btn-primary mb-1 mb-sm-1 mb-md-0">Ver</a>
                 </td>
             </tr>
