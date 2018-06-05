@@ -1,9 +1,20 @@
-@font-face { font-family: 'Lemon'; src: url('../fonts/DK Lemon Yellow Sun.otf'); }
-@font-face { font-family: Handsean; src: url(/web/fonts/handsean_2.ttf); }
-@font-face { font-family: Handy; src: url('../fonts/wg_handy_icons_1.ttf'); }
-@font-face { font-family: Handyvol; src: url('../fonts/wg_handy_icons_vol2_0.ttf'); }
-
-h1{
-    color: green;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+.nombre{
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 40px;
+    margin-top: 0px;
+}
+.titulo{
+    font-family: lemon, serif;
+    border-bottom: 1px solid #9a56d2;
+    margin-top: 30px;
+}
+.titulo-tabla{
+    text-align: right;
+    font-family: lemon, serif;
+    font-size: 20px;
+    font-weight: bold;
+    border-right: 5px solid #745cd8;
+    vertical-align: top;
+    padding-right: 10px;
 }

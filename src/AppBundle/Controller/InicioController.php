@@ -36,6 +36,15 @@ class InicioController extends Controller
             'handsean' => [
                 'R' => 'handsean_2.ttf',
             ],
+            'lemon' => [
+                'R' => 'DKLemonYellowSun.ttf'
+            ],
+            'handy' => [
+                'R' => 'wg_handy_icons_1.ttf'
+            ],
+            'handyvol' => [
+                'R' => 'wg_handy_icons_vol2_0.ttf'
+            ]
         ];
 
         foreach ($fontdata as $f => $fs) {
@@ -51,10 +60,11 @@ class InicioController extends Controller
         $mpdf->default_available_fonts = $mpdf->available_unifonts;
 
         $stylesheet = file_get_contents('../web/css/pdf.css');
+        $mpdf->SetTitle($user->getNombre() . $user->getApellido1() . $user->getApellido2() . 'CV');
 
         $mpdf->WriteHTML($stylesheet,1);
         $mpdf->WriteHTML($html,2);
 
-        $mpdf->Output();
+        $mpdf->Output($user->getNombre() . $user->getApellido1() . $user->getApellido2() . 'CV.pdf', 'I');
     }
 }
