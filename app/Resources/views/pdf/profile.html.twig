@@ -4,7 +4,7 @@
 
 <table width="100%" style="margin-top: 0px;">
     <tr>
-       <td width="30%"><img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" alt="Foto de perfil" width="200px" height="150px" /></td>
+       <td width="30%"><img src="{{ asset('subidas/fotos/usuarios/' ~ alumno.fotografia) }}" alt="Foto de perfil" width="180px" height="150px" /></td>
         <td width="5%;"></td>
         <td><p><b><span style="font-family: handyvol, serif">H</span>Dirección:</b> {{ app.user.curriculum.direccion }}</p>
             <p><b><span style="font-family: handyvol, serif;">H</span>Localidad:</b> {{ app.user.curriculum.poblacion }}</p>
@@ -27,40 +27,32 @@
 </div>
 <div>
     <h1 class="titulo">Competencias Profesionales</h1>
-    <table width="100%" style="margin-top: 0px;">
+    <table width="100%" style="margin-top: 20px;">
         <tr>
             <td width="50%" class="titulo-tabla">Lenguajes de Programación</td>
             <td width="2%"></td>
-            <td style="margin-left: 30px;">
-                {{ app.user.curriculum.lenguajes|raw }}
-            </td>
+            <td>{{ app.user.curriculum.lenguajes|raw }}</td>
         </tr>
     </table>
-    <table width="100%" style="margin-top: 40px;">
+    <table width="100%" style="margin-top: 20px;">
         <tr>
             <td width="50%" class="titulo-tabla">Sistemas Operativos</td>
             <td width="2%"></td>
-            <td style="margin-left: 30px;">
-                {{ app.user.curriculum.sistemas|raw }}
-            </td>
+            <td>{{ app.user.curriculum.sistemas|raw }}</td>
         </tr>
     </table>
-    <table width="100%" style="margin-top: 40px;">
+    <table width="100%" style="margin-top: 20px;">
         <tr>
             <td width="50%" class="titulo-tabla">Bases de Datos</td>
             <td width="2%"></td>
-            <td style="margin-left: 30px;">
-                {{ app.user.curriculum.basesdedatos|raw }}
-            </td>
+            <td>{{ app.user.curriculum.basesdedatos|raw }}</td>
         </tr>
     </table>
-    <table width="100%" style="margin-top: 40px;">
+    <table width="100%" style="margin-top: 20px;">
         <tr>
             <td width="50%" class="titulo-tabla">Programación/diseño web</td>
             <td width="2%"></td>
-            <td style="margin-left: 30px;">
-                {{ app.user.curriculum.programacionweb|raw }}
-            </td>
+            <td>{{ app.user.curriculum.programacionweb|raw }}</td>
         </tr>
     </table>
 </div>
