@@ -40,9 +40,11 @@
     </div>
     {% if app.user.curriculum %}
         <div class="ml-lg-3 col-md-12 col-lg-7 perfil mx-auto" style="overflow:auto; height: 657px;">
-            <h4 class="my-2">Experiencia Profesional</h4>
-            <hr>
-            <p>{{ app.user.curriculum.experiencias | raw }}</p>
+            {% if app.user.curriculum.experiencias %}
+                <h4 class="my-2">Experiencia Profesional</h4>
+                <hr>
+                <p>{{ app.user.curriculum.experiencias | raw }}</p>
+            {% endif %}
             <h4 class="my-2 nombre">Formación Académica</h4>
             <hr>
             <p>{{ app.user.curriculum.formaciones | raw }}</p>
@@ -60,18 +62,24 @@
             <h6>Programación/Diseño Web</h6>
             <p>{{ app.user.curriculum.programacionweb | raw }}</p>
             <hr>
-            <h4 class="my-2 nombre">Competencias Comunicativas</h4>
-            <hr>
-            <p>{{ app.user.curriculum.compcomunicativas | raw }}</p>
-            <h4 class="my-2 nombre">Competencias Organizativas</h4>
-            <hr>
-            <p>{{ app.user.curriculum.comporganizativas | raw }}</p>
-            <h4 class="my-2 nombre">Competencias Personales</h4>
-            <hr>
-            <p>{{ app.user.curriculum.comppersonales | raw }}</p>
+            {% if app.user.curriculum.compcomunicativas %}
+                <h4 class="my-2 nombre">Competencias Comunicativas</h4>
+                <hr>
+                <p>{{ app.user.curriculum.compcomunicativas | raw }}</p>
+            {% endif %}
+            {% if app.user.curriculum.comporganizativas %}
+                <h4 class="my-2 nombre">Competencias Organizativas</h4>
+                <hr>
+                <p>{{ app.user.curriculum.comporganizativas | raw }}</p>
+            {% endif %}
+            {% if app.user.curriculum.comppersonales %}
+                <h4 class="my-2 nombre">Competencias Personales</h4>
+                <hr>
+                <p>{{ app.user.curriculum.comppersonales | raw }}</p>
+            {% endif %}
             <h4 class="my-2 nombre">Información Adiccional</h4>
             <hr>
-            <p>{{ app.user.curriculum.infoadiccional | raw }}</p>
+            <p>{{ app.user.curriculum.infoadicional | raw }}</p>
         </div>
     {% endif %}
 </div>

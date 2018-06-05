@@ -67,7 +67,7 @@ class CurriculumType extends AbstractType
             ->add('comppersonales', CKEditorType::class, [
                 'label' => 'Competencias Personales'
             ])
-            ->add('infoadiccional', CKEditorType::class, [
+            ->add('infoadicional', CKEditorType::class, [
                 'label' => 'Información Adiccional'
             ])
             ->add('sexo', ChoiceType::class, [

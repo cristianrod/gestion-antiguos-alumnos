@@ -26,7 +26,8 @@ class Curriculum
     private $id;
 
     /**
-     * @ORM\Column(type="string", nullable=true, length=100)
+     * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
      */
     private $direccion;
 
@@ -38,6 +39,7 @@ class Curriculum
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank()
      */
     private $fechanacimiento;
 
@@ -48,26 +50,31 @@ class Curriculum
 
     /**
      * @ORM\Column(type="array")
+     * @Assert\NotBlank()
      */
     private $formaciones;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="array")
+     * @Assert\NotBlank()
      */
     private $lenguajes;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="array")
+     * @Assert\NotBlank()
      */
     private $sistemas;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="array")
+     * @Assert\NotBlank()
      */
     private $basesdedatos;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="array")
+     * @Assert\NotBlank()
      */
     private $programacionweb;
 
@@ -89,12 +96,18 @@ class Curriculum
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $infoadiccional;
+    private $infoadicional;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     private $sexo;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $puntuacion;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Provincia", inversedBy="curriculums")
@@ -341,17 +354,17 @@ class Curriculum
     /**
      * @return mixed
      */
-    public function getInfoadiccional()
+    public function getInfoadicional()
     {
-        return $this->infoadiccional;
+        return $this->infoadicional;
     }
 
     /**
-     * @param mixed $infoadiccional
+     * @param $infoadicional
      */
-    public function setInfoadiccional($infoadiccional)
+    public function setInfoadicional($infoadicional)
     {
-        $this->infoadiccional = $infoadiccional;
+        $this->infoadicional = $infoadicional;
     }
 
     /**
@@ -367,5 +380,21 @@ class Curriculum
     public function setProvincia($provincia)
     {
         $this->provincia = $provincia;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPuntuacion()
+    {
+        return $this->puntuacion;
+    }
+
+    /**
+     * @param mixed $puntuacion
+     */
+    public function setPuntuacion($puntuacion)
+    {
+        $this->puntuacion = $puntuacion;
     }
 }
