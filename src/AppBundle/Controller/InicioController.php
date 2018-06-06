@@ -27,10 +27,12 @@ class InicioController extends Controller
      */
     public function pdfAction()
     {
+        if (!$this->getUser()->getCurriculum()){
+            return $this->redirectToRoute('fos_user_profile_show');
+        }
+
         $user = $this->getUser();
-        $html = $this->renderView('pdf/profile.html.twig', [
-            'alumno' => $user,
-        ]);
+        $html = $this->renderView('pdf/profile.html.twig');
 
         $mpdf = new \Mpdf\Mpdf();
 
