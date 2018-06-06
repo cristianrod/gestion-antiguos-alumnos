@@ -44,36 +44,36 @@ class Curriculum
     private $fechanacimiento;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $experiencias;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $formaciones;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $lenguajes;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $sistemas;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $basesdedatos;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $programacionweb;

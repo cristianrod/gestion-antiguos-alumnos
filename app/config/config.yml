@@ -78,10 +78,29 @@ vich_uploader:
             upload_destination: '%kernel.project_dir%/web/subidas/fotos/usuarios'
 
 easy_admin:
+    formats:
+        date: 'd/m/Y'
     site_name: 'Antiguos Alumnos'
+    design:
+        menu:
+            - { entity: 'Usuario', label: 'Usuarios', icon: 'user' }
+            - { entity: 'Curriculum', label: 'Curriculums', icon: 'file-text' }
     entities:
         Usuario:
             class: AppBundle\Entity\Usuario
+            list:
+                title: 'Usuarios'
+                sort: 'nombre'
+                fields:
+                    - { property: 'nif', label: 'NIF' }
+                    - { property: 'nombre', label: 'Nombre' }
+                    - { property: 'email', label: 'Email', type: 'email' }
+                    - { property: 'movil', label: 'Movil', type: 'tel' }
+                    - { property: 'enabled', label: 'Activo' }
+                    - { property: 'esAlumno', label: 'Alumno' }
+                actions:
+                    - { name: 'edit', label: 'Modificar'}
+                    - { name: 'delete', label: 'Borrar'}
             form:
                 fields:
                     - { property: 'username', label: 'Usuario' }
@@ -102,6 +121,34 @@ easy_admin:
                 form_options: { validation_groups: ['Default'] }
                 fields:
                     - { property: 'plainPassword', type: 'text', type_options: { required: false }, label: 'Contraseña' }
+        Curriculum:
+            class: AppBundle\Entity\Curriculum
+            list:
+                title: 'Curriculums'
+                fields:
+                    - { property: 'direccion', label: 'Dirección' }
+                    - { property: 'poblacion', label: 'Población' }
+                    - { property: 'fechanacimiento', label: 'Fecha de Nacimiento', type: 'date' }
+                    - { property: 'lenguajes', label: 'Lenguajes de programación' }
+                    - { property: 'basesdedatos', label: 'Bases de datos' }
+                actions:
+                    - { name: 'edit', label: 'Modificar'}
+                    - { name: 'delete', label: 'Borrar'}
+            form:
+                fields:
+                    - { property: 'direccion', label: 'Dirección' }
+                    - { property: 'poblacion', label: 'Población' }
+                    - { property: 'fechanacimiento', label: 'Fecha de Nacimiento', type: 'date' }
+                    - { property: 'experiencias', label: 'Experiencia Profesional', type: 'textarea' }
+                    - { property: 'formaciones', label: 'Formación Académica', type: 'textarea' }
+                    - { property: 'lenguajes', label: 'Lenguajes de Programación', type: 'textarea' }
+                    - { property: 'basesdedatos', label: 'Bases de Datos', type: 'textarea' }
+                    - { property: 'programacionweb', label: 'Programación/Diseño Web', type: 'textarea' }
+                    - { property: 'compcomunicativas', label: 'Competencias Comunicativas', type: 'textarea' }
+                    - { property: 'comporganizativas', label: 'Competencias Organizativas', type: 'textarea' }
+                    - { property: 'comppersonales', label: 'Competencias Personales', type: 'textarea' }
+                    - { property: 'infoadicional', label: 'Información Adiccional', type: 'textarea' }
+                    - { property: 'sexo', label: 'Sexo', type: 'choice', type_options: { expanded: true, choices: { 'Hombre': 'Hombre', 'Mujer': 'Mujer' } }  }
 
 fos_user:
     db_driver: orm
