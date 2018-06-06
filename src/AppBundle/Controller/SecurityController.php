@@ -28,12 +28,6 @@ class SecurityController extends Controller
 
             $password = $passwordEncoder->encodePassword($usuario, $usuario->getPassword());
             $usuario->setPassword($password);
-            if(!$usuario->getEsAlumno()){
-                $usuario->setRoles(['ROLE_PROFESOR']);
-            }
-            else{
-                $usuario->setRoles(['ROLE_ALUMNO']);
-            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($usuario);
