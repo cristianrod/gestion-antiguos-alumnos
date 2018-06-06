@@ -83,14 +83,25 @@ easy_admin:
         Usuario:
             class: AppBundle\Entity\Usuario
             form:
-              fields:
-                  - { property: 'username', label: 'Usuario' }
-                  - { property: 'email', type: 'email', label: 'Email' }
-                  - { property: 'nombre', label: 'Nombre' }
-                  - { property: 'apellido1', label: '1º Apellido' }
-                  - { property: 'apellido2', label: '2º Apellido' }
-                  - { property: 'movil', label: 'Móvil' }
-                  - { property: 'fichero', type: 'vich_image', label: 'Fotografía' }
+                fields:
+                    - { property: 'username', label: 'Usuario' }
+                    - { property: 'email', type: 'email', label: 'Email' }
+                    - { property: 'plainPassword', type: 'text', type_options: { required: true }, label: 'Contraseña' }
+                    - { property: 'nif', label: 'NIF' }
+                    - { property: 'nombre', label: 'Nombre' }
+                    - { property: 'apellido1', label: '1º Apellido' }
+                    - { property: 'apellido2', label: '2º Apellido' }
+                    - { property: 'movil', label: 'Móvil' }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'Usuario': 'ROLE_USER', 'Admin': 'ROLE_ADMIN' } } }
+                    - { property: 'esAlumno', label: 'Alumno' }
+                    - { property: 'enabled', label: 'Activar Cuenta' }
+                    - { property: 'fichero', type: 'vich_image', label: 'Fotografía' }
+            new:
+                form_options: { validation_groups: ['Default'] }
+            edit:
+                form_options: { validation_groups: ['Default'] }
+                fields:
+                    - { property: 'plainPassword', type: 'text', type_options: { required: false }, label: 'Contraseña' }
 
 fos_user:
     db_driver: orm
