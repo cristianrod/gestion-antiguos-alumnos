@@ -77,9 +77,11 @@
                 <hr>
                 <p>{{ app.user.curriculum.comppersonales | raw }}</p>
             {% endif %}
-            <h4 class="my-2 nombre">Información Adiccional</h4>
-            <hr>
-            <p>{{ app.user.curriculum.infoadicional | raw }}</p>
+            {% if app.user.curriculum.infoadicional %}
+                <h4 class="my-2 nombre">Información Adiccional</h4>
+                <hr>
+                <p>{{ app.user.curriculum.infoadicional | raw }}</p>
+            {% endif %}
         </div>
     {% endif %}
 </div>
