@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enviar Mensaje{% endblock %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_start(form, { attr: {novalidate: 'novalidate'}}) }}
+            {{ form_row(form.asunto) }}
+            {{ form_row(form.contenido) }}
+            {{ form_row(form.mensajepara) }}
+            <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <small id="emailHelp" class="form-text text-muted">Escriba la puntuación de los alumnos a los que quiera enviar este mensaje, en blanco para todos.</small>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
