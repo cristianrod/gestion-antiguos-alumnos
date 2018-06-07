@@ -107,7 +107,24 @@ easy_admin:
                     - { property: 'esAlumno', label: 'Alumno' }
                 actions:
                     - { name: 'edit', label: 'Modificar'}
+                    - { name: 'show', label: 'Ver' }
                     - { name: 'delete', label: 'Borrar'}
+            show:
+                title: 'Ver Usuario'
+                fields:
+                    - { property: 'username', label: 'Usuario' }
+                    - { property: 'email', label: 'Email' }
+                    - { property: 'enabled', label: 'Activado' }
+                    - { property: 'lastLogin', label: 'Último inicio de sesión' }
+                    - { property: 'roles', label: 'Roles' }
+                    - { property: 'esAlumno', label: 'Alumno' }
+                    - { property: 'nif', label: 'NIF' }
+                    - { property: 'nombre', label: 'Nombre' }
+                    - { property: 'apellido1', label: '1º Apellido' }
+                    - { property: 'apellido2', label: '2º Apellido' }
+                    - { property: 'movil', label: 'Móvil' }
+                    - { property: 'fotografia', label: 'Fotografía' }
+                    - { property: 'curriculum', label: 'Curriculum' }
             form:
                 fields:
                     - { property: 'username', label: 'Usuario' }
@@ -123,8 +140,10 @@ easy_admin:
                     - { property: 'enabled', label: 'Activar Cuenta' }
                     - { property: 'fichero', type: 'vich_image', label: 'Fotografía' }
             new:
+                title: 'Crear Usuario'
                 form_options: { validation_groups: ['Default'] }
             edit:
+                title: 'Modificar Usuario'
                 form_options: { validation_groups: ['Default'] }
                 fields:
                     - { property: 'plainPassword', type: 'text', type_options: { required: false }, label: 'Contraseña' }
@@ -133,6 +152,7 @@ easy_admin:
             list:
                 title: 'Curriculums'
                 fields:
+                    - { property: 'alumno', label: 'Usuario' }
                     - { property: 'direccion', label: 'Dirección' }
                     - { property: 'poblacion', label: 'Población' }
                     - { property: 'fechanacimiento', label: 'Fecha de Nacimiento', type: 'date' }
@@ -140,7 +160,28 @@ easy_admin:
                     - { property: 'basesdedatos', label: 'Bases de datos' }
                 actions:
                     - { name: 'edit', label: 'Modificar'}
+                    - { name: 'show', label: 'Ver' }
                     - { name: 'delete', label: 'Borrar'}
+            show:
+                title: 'Ver Curriculum'
+                fields:
+                    - { property: 'alumno', label: 'Alumno' }
+                    - { property: 'direccion', label: 'Dirección' }
+                    - { property: 'poblacion', label: 'Población' }
+                    - { property: 'provincia', label: 'Provincia' }
+                    - { property: 'fechanacimiento', label: 'Fecha de Nacimiento' }
+                    - { property: 'experiencias', label: 'Experiencia Profesional' }
+                    - { property: 'formaciones', label: 'Formación Académica' }
+                    - { property: 'lenguajes', label: 'Lenguajes de Programación' }
+                    - { property: 'sistemas', label: 'Sistemas Operativos' }
+                    - { property: 'basesdedatos', label: 'Bases de Datos' }
+                    - { property: 'programacionweb', label: 'Programación/Diseño Web' }
+                    - { property: 'compcomunicativas', label: 'Competencias Comunicativas' }
+                    - { property: 'comporganizativas', label: 'Competencias Organizativas' }
+                    - { property: 'comppersonales', label: 'Competencias Personales' }
+                    - { property: 'infoadicional', label: 'Información Adiccional' }
+                    - { property: 'puntuacion', label: 'Puntuación' }
+                    - { property: 'sexo', label: 'Sexo' }
             form:
                 fields:
                     - { property: 'alumno', label: 'Alumno', type_options: { required: true } }
@@ -160,6 +201,10 @@ easy_admin:
                     - { property: 'infoadicional', label: 'Información Adiccional', type: 'ckeditor' }
                     - { property: 'puntuacion', label: 'Puntuación' }
                     - { property: 'sexo', label: 'Sexo', type: 'choice', type_options: { expanded: true, choices: { 'Hombre': 'Hombre', 'Mujer': 'Mujer' } }  }
+            new:
+                title: 'Crear Curriculum'
+            edit:
+                title: 'Modificar Curriculum'
 
 fos_user:
     db_driver: orm
