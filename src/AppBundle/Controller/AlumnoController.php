@@ -40,6 +40,10 @@ class AlumnoController extends Controller
      */
     public function showAction(Usuario $alumno)
     {
+        if (!$alumno->getEsAlumno()){
+            return $this->redirectToRoute('alumnos_index');
+        }
+
         return $this->render(":alumno:show.html.twig", [
             'alumno' => $alumno,
         ]);
