@@ -77,6 +77,13 @@ vich_uploader:
             uri_prefix: /subidas/fotos/usuarios
             upload_destination: '%kernel.project_dir%/web/subidas/fotos/usuarios'
 
+ivory_ck_editor:
+    input_sync: true
+    default_config: base_config
+    configs:
+        base_config:
+            toolbar: [ [ "Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Undo", "Redo"], "/", [ "Bold", "Italic", "Strike", "RemoveFormat", "NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "JustifyLeft", "JustifyCenter", "JustifyRight"] ]
+
 easy_admin:
     formats:
         date: 'd/m/Y'
@@ -139,15 +146,15 @@ easy_admin:
                     - { property: 'direccion', label: 'Dirección' }
                     - { property: 'poblacion', label: 'Población' }
                     - { property: 'fechanacimiento', label: 'Fecha de Nacimiento', type: 'date' }
-                    - { property: 'experiencias', label: 'Experiencia Profesional', type: 'textarea' }
-                    - { property: 'formaciones', label: 'Formación Académica', type: 'textarea' }
-                    - { property: 'lenguajes', label: 'Lenguajes de Programación', type: 'textarea' }
-                    - { property: 'basesdedatos', label: 'Bases de Datos', type: 'textarea' }
-                    - { property: 'programacionweb', label: 'Programación/Diseño Web', type: 'textarea' }
-                    - { property: 'compcomunicativas', label: 'Competencias Comunicativas', type: 'textarea' }
-                    - { property: 'comporganizativas', label: 'Competencias Organizativas', type: 'textarea' }
-                    - { property: 'comppersonales', label: 'Competencias Personales', type: 'textarea' }
-                    - { property: 'infoadicional', label: 'Información Adiccional', type: 'textarea' }
+                    - { property: 'experiencias', label: 'Experiencia Profesional', type: 'ckeditor' }
+                    - { property: 'formaciones', label: 'Formación Académica', type: 'ckeditor' }
+                    - { property: 'lenguajes', label: 'Lenguajes de Programación', type: 'ckeditor' }
+                    - { property: 'basesdedatos', label: 'Bases de Datos', type: 'ckeditor' }
+                    - { property: 'programacionweb', label: 'Programación/Diseño Web', type: 'ckeditor' }
+                    - { property: 'compcomunicativas', label: 'Competencias Comunicativas', type: 'ckeditor' }
+                    - { property: 'comporganizativas', label: 'Competencias Organizativas', type: 'ckeditor' }
+                    - { property: 'comppersonales', label: 'Competencias Personales', type: 'ckeditor' }
+                    - { property: 'infoadicional', label: 'Información Adiccional', type: 'ckeditor' }
                     - { property: 'sexo', label: 'Sexo', type: 'choice', type_options: { expanded: true, choices: { 'Hombre': 'Hombre', 'Mujer': 'Mujer' } }  }
 
 fos_user:
