@@ -33,22 +33,19 @@ class AlumnoController extends Controller
     }
 
     /**
-     * @Route("/pdf/crear")
-     * @return \TFox\MpdfPortBundle\Response\PDFResponse
-     * @throws \Mpdf\MpdfException
+     * @Route("/enviar/mensaje")
+     * @param \Swift_Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function pdfAction()
+    public function emailAction(\Swift_Mailer $mailer)
     {
-        $html = $this->renderView('pdf/alumnos.html.twig');
+        $message = (new \Swift_Message('Hola Email'))
+            ->setFrom('enviar@gmail.com')
+            ->setTo('recibir@gmail.com')
+            ->setBody('<h3>¡Te has registrado correctamente!</h3>');
 
-        return new \TFox\MpdfPortBundle\Response\PDFResponse($this->getMpdfService()->generatePdf($html));
-    }
+        $mailer->send($message);
 
-    /**
-     * @return \TFox\MpdfPortBundle\Service\PDFService
-     */
-    private function getMpdfService()
-    {
-        return $this->get('t_fox_mpdf_port.pdf');
+        return $this->redirectToRoute('alumnos_index');
     }
 }
