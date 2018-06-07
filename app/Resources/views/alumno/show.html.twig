@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ver - Alumnos{% endblock %}
+{% block container %}
+    <div class="row">
+        <div class="{{ alumno.curriculum ?  'mr-lg-2 col-lg-4' : '' }} col-sm-12 perfil mb-4 mx-auto">
+            <p class="my-2 nombre">{{ alumno.nombre }} {{ alumno.apellido1 }} {{ alumno.apellido2 }}
+                {% if alumno.curriculum and alumno.curriculum.puntuacion %}
+                    <span>({{ alumno.curriculum.puntuacion }} <i class="fas fa-star"></i>)</span>
+                {% endif %}
+            </p>
+            <div class="text-center mx-auto my-2">
+                <img src="{{ asset(alumno.fotografia is null ? 'subidas/fotos/usuarios/defaultuser.jpg' : 'subidas/fotos/usuarios/' ~ alumno.fotografia) }}" class="foto-perfil">
+            </div>
+            <p class="text-center">
+                <span class="badge nombre {{ alumno.esAlumno ? 'badge-primary' : 'badge-danger' }}">{{ alumno.esAlumno ? 'Alumno' : 'Profesor' }}</span>
+            </p>
+            <hr>
+            <p><span class="titulos"><i class="fas fa-user"></i> Usuario: </span>{{ alumno.username }}</p>
+            <p><span class="titulos"><i class="fas fa-envelope"></i> Email: </span>{{ alumno.email }}</p>
+            <p><span class="titulos"><i class="fas fa-phone"></i> Móvil: </span>{{ alumno.movil }}</p>
+            {% if alumno.curriculum %}
+                <p><span class="titulos"><i class="fas fa-address-card"></i> Dirección: </span>{{ alumno.curriculum.direccion }}</p>
+                <p><span class="titulos"><i class="fas fa-map-marker-alt"></i> Población: </span>{{ alumno.curriculum.poblacion }} ({{ alumno.curriculum.provincia.nombre }})</p>
+                <p><span class="titulos"><i class="fas fa-calendar-alt"></i> Fecha de Nacimiento: </span>{{ alumno.curriculum.fechanacimiento|date('d-m-Y') }}</p>
+                <p><span class="titulos">{{ alumno.curriculum.sexo == 'Hombre' ? '<i class="fas fa-mars"></i>' : '<i class="fas fa-venus"></i>' }} Sexo: </span>{{ alumno.curriculum.sexo }}</p>
+            {% endif %}
+            {% if alumno.curriculum and alumno.esAlumno %}
+                <div class="mb-3">
+                    <hr>
+                    <div class="text-center">
+                        <a href="{{ path('profile_pdf') }}"><i class="fas fa-file-pdf"></i> Generar PDF</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        {% if alumno.curriculum %}
+            <div class="ml-lg-3 col-md-12 col-lg-7 perfil mx-auto" style="overflow:auto; height: 657px;">
+                {% if alumno.curriculum.experiencias %}
+                    <h4 class="my-2">Experiencia Profesional</h4>
+                    <hr>
+                    <p>{{ alumno.curriculum.experiencias | raw }}</p>
+                {% endif %}
+                <h4 class="my-2 nombre">Formación Académica</h4>
+                <hr>
+                <p>{{ alumno.curriculum.formaciones | raw }}</p>
+                <h4 class="my-2 nombre">Competencias Profesionales</h4>
+                <hr>
+                <h6>Lenguajes de programacion</h6>
+                <p>{{ alumno.curriculum.lenguajes | raw }}</p>
+                <hr>
+                <h6>Sistemas Operativos</h6>
+                <p>{{ alumno.curriculum.sistemas | raw }}</p>
+                <hr>
+                <h6>Bases de Datos</h6>
+                <p>{{ alumno.curriculum.basesdedatos | raw }}</p>
+                <hr>
+                <h6>Programación/Diseño Web</h6>
+                <p>{{ alumno.curriculum.programacionweb | raw }}</p>
+                <hr>
+                {% if alumno.curriculum.compcomunicativas %}
+                    <h4 class="my-2 nombre">Competencias Comunicativas</h4>
+                    <hr>
+                    <p>{{ alumno.curriculum.compcomunicativas | raw }}</p>
+                {% endif %}
+                {% if alumno.curriculum.comporganizativas %}
+                    <h4 class="my-2 nombre">Competencias Organizativas</h4>
+                    <hr>
+                    <p>{{ alumno.curriculum.comporganizativas | raw }}</p>
+                {% endif %}
+                {% if alumno.curriculum.comppersonales %}
+                    <h4 class="my-2 nombre">Competencias Personales</h4>
+                    <hr>
+                    <p>{{ alumno.curriculum.comppersonales | raw }}</p>
+                {% endif %}
+                {% if alumno.curriculum.infoadicional %}
+                    <h4 class="my-2 nombre">Información Adiccional</h4>
+                    <hr>
+                    <p>{{ alumno.curriculum.infoadicional | raw }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -33,6 +33,19 @@ class AlumnoController extends Controller
     }
 
     /**
+     * @Route("/ver/{id}", name="alumnos_show")
+     * @param Usuario $alumno
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function showAction(Usuario $alumno)
+    {
+        return $this->render(":alumno:show.html.twig", [
+            'alumno' => $alumno,
+        ]);
+    }
+
+    /**
      * @Route("/enviar/mensaje")
      * @param \Swift_Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\Response
