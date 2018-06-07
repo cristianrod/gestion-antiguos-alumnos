@@ -1,5 +1,30 @@
 {% extends 'base.html.twig' %}
 {% block title %}Inicio - Gestión Antiguos Alumnos{% endblock %}
 {% block container %}
+    <div class="row mt-5">
+        <div class="ext-box">
+            <div class="col-md-6 col-sm-12 text-center mensajebox int-box">
+                <h1><i class="fas fa-envelope"></i></h1>
+                <h1 class="no-select">Enviar Mensaje</h1>
+            </div>
+        </div>
+        <div class="ext-box float-right">
+            <div class="col-md-6 col-sm-12 text-center pdfbox int-box">
+                <h1><i class="fas fa-file-pdf"></i></h1>
+                <h1 class="no-select">Obtener PDF</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('.mensajebox').on("click" ,function(){
+            window.location.replace("/alumnos");
+        });
+        $('.pdfbox').on("click" ,function(){
+            window.location.replace("/alumnos");
+        });
+    </script>
 {% endblock %}
