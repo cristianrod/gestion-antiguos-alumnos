@@ -127,6 +127,11 @@ class Usuario extends BaseUser
         parent::__construct();
     }
 
+    public function __toString()
+    {
+        return $this->nombre . ' ' . $this->apellido1 . ' ' . $this->apellido2 . ' (' . $this->username . ')';
+    }
+
     /**
      * @return mixed
      */

@@ -143,18 +143,22 @@ easy_admin:
                     - { name: 'delete', label: 'Borrar'}
             form:
                 fields:
+                    - { property: 'alumno', label: 'Alumno', type_options: { required: true } }
                     - { property: 'direccion', label: 'Dirección' }
                     - { property: 'poblacion', label: 'Población' }
+                    - { property: 'provincia', label: 'Provincia', type_options: { required: true } }
                     - { property: 'fechanacimiento', label: 'Fecha de Nacimiento', type: 'date' }
                     - { property: 'experiencias', label: 'Experiencia Profesional', type: 'ckeditor' }
                     - { property: 'formaciones', label: 'Formación Académica', type: 'ckeditor' }
                     - { property: 'lenguajes', label: 'Lenguajes de Programación', type: 'ckeditor' }
+                    - { property: 'sistemas', label: 'Sistemas Operativos', type: 'ckeditor' }
                     - { property: 'basesdedatos', label: 'Bases de Datos', type: 'ckeditor' }
                     - { property: 'programacionweb', label: 'Programación/Diseño Web', type: 'ckeditor' }
                     - { property: 'compcomunicativas', label: 'Competencias Comunicativas', type: 'ckeditor' }
                     - { property: 'comporganizativas', label: 'Competencias Organizativas', type: 'ckeditor' }
                     - { property: 'comppersonales', label: 'Competencias Personales', type: 'ckeditor' }
                     - { property: 'infoadicional', label: 'Información Adiccional', type: 'ckeditor' }
+                    - { property: 'puntuacion', label: 'Puntuación' }
                     - { property: 'sexo', label: 'Sexo', type: 'choice', type_options: { expanded: true, choices: { 'Hombre': 'Hombre', 'Mujer': 'Mujer' } }  }
 
 fos_user:

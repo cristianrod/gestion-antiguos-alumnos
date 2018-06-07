@@ -4,7 +4,7 @@
 
 <table width="100%" style="margin-top: 0px;">
     <tr>
-       <td width="30%"><img src="{{ asset(app.user.fotografia is null ? 'subidas/fotos/usuarios/defaultuser.jpg' : 'subidas/fotos/usuarios/' ~ alumno.fotografia) }}" alt="Foto de perfil" width="150px" height="150px" /></td>
+       <td width="30%"><img src="{{ asset(app.user.fotografia is null ? 'subidas/fotos/usuarios/defaultuser.jpg' : 'subidas/fotos/usuarios/' ~ app.user.fotografia) }}" alt="Foto de perfil" width="150px" height="150px" /></td>
         <td width="5%;"></td>
         <td><p><b><span style="font-family: handyvol, serif">H</span>Dirección:</b> {{ app.user.curriculum.direccion }}</p>
             <p><b><span style="font-family: handyvol, serif;">H</span>Localidad:</b> {{ app.user.curriculum.poblacion }}</p>

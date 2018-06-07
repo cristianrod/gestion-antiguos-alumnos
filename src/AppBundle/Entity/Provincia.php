@@ -38,6 +38,11 @@ class Provincia
         $this->curriculums = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->nombre;
+    }
+
     /**
      * @return mixed
      */
