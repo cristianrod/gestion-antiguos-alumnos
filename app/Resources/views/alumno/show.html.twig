@@ -28,7 +28,7 @@
                 <div class="mb-3">
                     <hr>
                     <div class="text-center">
-                        <a href="{{ path('profile_pdf') }}"><i class="fas fa-file-pdf"></i> Generar PDF</a>
+                        <a href="{{ path('alumnos_pdf', {'id': alumno.id}) }}"><i class="fas fa-file-pdf"></i> Generar PDF</a>
                     </div>
                 </div>
             {% endif %}

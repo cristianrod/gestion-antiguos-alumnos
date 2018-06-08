@@ -1,0 +1,90 @@
+{% for curriculum in curriculums %}
+    <h1 class="titulo">Datos Personales</h1>
+    
+    <p class="nombre" style="font-family: handsean, serif; margin-bottom: 0px;">{{ curriculum.alumno.nombre }} {{ curriculum.alumno.apellido1 }} {{ curriculum.alumno.apellido2 }}</p>
+
+    <table width="100%" style="margin-top: 0px;">
+        <tr>
+            <td width="30%"><img src="{{ asset(curriculum.alumno.fotografia is null ? 'subidas/fotos/usuarios/defaultuser.jpg' : 'subidas/fotos/usuarios/' ~ curriculum.alumno.fotografia) }}" alt="Foto de perfil" width="150px" height="150px" /></td>
+            <td width="5%;"></td>
+            <td><p><b><span style="font-family: handyvol, serif">H</span>Dirección:</b> {{ curriculum.alumno.curriculum.direccion }}</p>
+                <p><b><span style="font-family: handyvol, serif;">H</span>Localidad:</b> {{ curriculum.alumno.curriculum.poblacion }}</p>
+                <p><b><span style="font-family: handyvol, serif;">H</span>Provincia:</b> {{ curriculum.alumno.curriculum.provincia.nombre }}</p>
+                <p><b><span style="font-family: handyvol, serif">H</span>Teléfono:</b> {{ curriculum.alumno.movil }}</p>
+                <p><b><span style="font-family: handyvol, serif">H</span>Email:</b> {{ curriculum.alumno.email }}</p>
+                <p><b><span style="font-family: handyvol, serif">H</span>Fecha de Nacimiento:</b> {{ curriculum.alumno.curriculum.fechanacimiento|date('d-m-Y') }}</p>
+                <p><b><span style="font-family: handyvol, serif">H</span>Sexo:</b> {{ curriculum.alumno.curriculum.sexo }}</p>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <h1 class="titulo">Formación Académica</h1>
+        {{ curriculum.alumno.curriculum.formaciones | raw }}
+    </div>
+    {% if curriculum.alumno.curriculum.experiencias %}
+        <div>
+            <h1 class="titulo">Experiencia Profesional</h1>
+            {{ curriculum.alumno.curriculum.experiencias | raw }}
+        </div>
+    {% endif %}
+    <div>
+        <h1 class="titulo">Competencias Profesionales</h1>
+        <table width="100%" style="margin-top: 20px;">
+            <tr>
+                <td width="50%" class="titulo-tabla">Lenguajes de Programación</td>
+                <td width="2%"></td>
+                <td>{{ curriculum.alumno.curriculum.lenguajes|raw }}</td>
+            </tr>
+        </table>
+        <table width="100%" style="margin-top: 20px;">
+            <tr>
+                <td width="50%" class="titulo-tabla">Sistemas Operativos</td>
+                <td width="2%"></td>
+                <td>{{ curriculum.alumno.curriculum.sistemas|raw }}</td>
+            </tr>
+        </table>
+        <table width="100%" style="margin-top: 20px;">
+            <tr>
+                <td width="50%" class="titulo-tabla">Bases de Datos</td>
+                <td width="2%"></td>
+                <td>{{ curriculum.alumno.curriculum.basesdedatos|raw }}</td>
+            </tr>
+        </table>
+        <table width="100%" style="margin-top: 20px;">
+            <tr>
+                <td width="50%" class="titulo-tabla">Programación/diseño web</td>
+                <td width="2%"></td>
+                <td>{{ curriculum.alumno.curriculum.programacionweb|raw }}</td>
+            </tr>
+        </table>
+    </div>
+    {% if curriculum.alumno.curriculum.compcomunicativas %}
+        <div>
+            <h1 class="titulo">Competencias comunicativas</h1>
+            {{ curriculum.alumno.curriculum.compcomunicativas | raw }}
+        </div>
+    {% endif %}
+    {% if curriculum.alumno.curriculum.comporganizativas %}
+        <div>
+            <h1 class="titulo">Competencias organizativas</h1>
+            {{ curriculum.alumno.curriculum.comporganizativas | raw }}
+        </div>
+    {% endif %}
+    {% if curriculum.alumno.curriculum.comppersonales %}
+        <div>
+            <h1 class="titulo">Competencias personales</h1>
+            {{ curriculum.alumno.curriculum.comppersonales | raw }}
+        </div>
+    {% endif %}
+    {% if curriculum.alumno.curriculum.infoadicional %}
+        <div>
+            <h1 class="titulo">Información Adicional</h1>
+            {{ curriculum.alumno.curriculum.infoadicional | raw }}
+        </div>
+    {% endif %}
+    {% set ultimo = curriculums|last %}
+    {% if curriculum != ultimo %}
+        <pagebreak />
+    {% endif %}
+{% endfor %}
+

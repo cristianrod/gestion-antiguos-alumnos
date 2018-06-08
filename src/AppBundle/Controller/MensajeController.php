@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Curriculum;
 use AppBundle\Entity\Mensaje;
 use AppBundle\Form\MensajeType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +21,7 @@ class MensajeController extends Controller
      * @Route("/mensajes/enviar")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function enviarAction(Request $request, \Swift_Mailer $mailer)
     {
@@ -43,7 +45,7 @@ class MensajeController extends Controller
 
             if ($mensaje->getMensajePara()){
                 $query = $repository->createQueryBuilder('c')
-                    ->where('c.puntuacion > ' . $mensaje->getMensajePara())
+                    ->where('c.puntuacion >= ' . $mensaje->getMensajePara())
                     ->getQuery();
             }
             else{
