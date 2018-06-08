@@ -51,50 +51,52 @@ class PdfController extends Controller
 
             $curriculums = $query->getResult();
 
-            $mpdf = new \Mpdf\Mpdf();
+            if (count($curriculums) > 0){
+                $mpdf = new \Mpdf\Mpdf();
 
-            $html = $this->renderView('pdf/alumnos.html.twig', [
-                'curriculums' => $curriculums,
-                'mpdf' => $mpdf
-            ]);
+                $html = $this->renderView('pdf/alumnos.html.twig', [
+                    'curriculums' => $curriculums,
+                    'mpdf' => $mpdf
+                ]);
 
-            $mpdf->AddFontDirectory('../web/fonts/');
+                $mpdf->AddFontDirectory('../web/fonts/');
 
-            $fontdata = [
-                'handsean' => [
-                    'R' => 'handsean_2.ttf',
-                ],
-                'lemon' => [
-                    'R' => 'DKLemonYellowSun.ttf'
-                ],
-                'handy' => [
-                    'R' => 'wg_handy_icons_1.ttf'
-                ],
-                'handyvol' => [
-                    'R' => 'wg_handy_icons_vol2_0.ttf'
-                ]
-            ];
+                $fontdata = [
+                    'handsean' => [
+                        'R' => 'handsean_2.ttf',
+                    ],
+                    'lemon' => [
+                        'R' => 'DKLemonYellowSun.ttf'
+                    ],
+                    'handy' => [
+                        'R' => 'wg_handy_icons_1.ttf'
+                    ],
+                    'handyvol' => [
+                        'R' => 'wg_handy_icons_vol2_0.ttf'
+                    ]
+                ];
 
-            foreach ($fontdata as $f => $fs) {
-                $mpdf->fontdata[$f] = $fs;
+                foreach ($fontdata as $f => $fs) {
+                    $mpdf->fontdata[$f] = $fs;
 
-                foreach (['R', 'B', 'I', 'BI'] as $style) {
-                    if (isset($fs[$style]) && $fs[$style]) {
-                        $mpdf->available_unifonts[] = $f . trim($style, 'R');
+                    foreach (['R', 'B', 'I', 'BI'] as $style) {
+                        if (isset($fs[$style]) && $fs[$style]) {
+                            $mpdf->available_unifonts[] = $f . trim($style, 'R');
+                        }
                     }
                 }
+
+                $mpdf->default_available_fonts = $mpdf->available_unifonts;
+
+                $stylesheet = file_get_contents('../web/css/pdf.css');
+
+                $mpdf->SetTitle('alumnosCV');
+
+                $mpdf->WriteHTML($stylesheet,1);
+                $mpdf->WriteHTML($html,2);
+
+                $mpdf->Output('alumnosCV.pdf', 'I');
             }
-
-            $mpdf->default_available_fonts = $mpdf->available_unifonts;
-
-            $stylesheet = file_get_contents('../web/css/pdf.css');
-
-            $mpdf->SetTitle('alumnosCV');
-
-            $mpdf->WriteHTML($stylesheet,1);
-            $mpdf->WriteHTML($html,2);
-
-            $mpdf->Output('alumnosCV.pdf', 'I');
         }
 
         return $this->render('pdf/puntuacion.html.twig', [

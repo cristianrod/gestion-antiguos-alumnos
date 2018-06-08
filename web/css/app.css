@@ -64,3 +64,18 @@
     -ms-user-select: none;
     user-select: none;
 }
+.enviado{
+    border: 1px solid rgba(28,28,28,0.4);
+    box-shadow: 0px 0px 16px 1px rgba(28,28,28,0.4);
+    height: 250px;
+}
+.izquierda{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.derecha{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}

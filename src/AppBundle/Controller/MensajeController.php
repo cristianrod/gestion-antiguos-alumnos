@@ -55,16 +55,17 @@ class MensajeController extends Controller
 
             $curriculums = $query->getResult();
 
-            foreach ($curriculums as $c){
-                $message = (new \Swift_Message($mensaje->getAsunto()))
-                    ->setFrom($this->getUser()->getEmail())
-                    ->setTo($c->getAlumno()->getEmail())
-                    ->setBody($mensaje->getContenido(),'text/html')
-                ;
-                $mailer->send($message);
+            if (count($curriculums) > 0){
+                foreach ($curriculums as $c){
+                    $message = (new \Swift_Message($mensaje->getAsunto()))
+                        ->setFrom($this->getUser()->getEmail())
+                        ->setTo($c->getAlumno()->getEmail())
+                        ->setBody($mensaje->getContenido(),'text/html')
+                    ;
+                    $mailer->send($message);
+                }
+                return $this->render('mensaje/sent.html.twig');
             }
-
-            return $this->redirectToRoute('inicio');
         }
         return $this->render('mensaje/send.html.twig', [
             'form' => $form->createView(),

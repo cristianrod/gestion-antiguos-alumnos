@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mensaje enviado{% endblock %}
+{% block container %}
+    <div class="row">
+        <div class="col-md-8 mx-auto text-center enviado mt-5">
+            <h1 class="mt-5">Mensaje enviado correctamente <i class="fas fa-envelope"></i></h1>
+            <a href="{{ path('inicio') }}" class="izquierda">Ir al inicio <i class="fas fa-home"></i></a>
+            <a href="{{ path('alumnos_index') }}" class="derecha">Ir al listado de alumnos <i class="fas fa-users"></i></a>
+        </div>
+    </div>
+{% endblock %}
