@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enviar Mensaje{% endblock %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group row">
+                <div class="col-form-label col-sm-2 form-control-label required">Para: </div>
+                <div class="col-form-label col-sm-2 form-control-label required">{{ alumno.email }}</div>
+            </div>
+            {{ form_start(form, { attr: {novalidate: 'novalidate'}}) }}
+            {{ form_row(form.asunto) }}
+            {{ form_row(form.contenido) }}
+            {{ form_row(form.enviarmensaje) }}
+            {{ form_widget(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
+    </div>
+{% endblock %}

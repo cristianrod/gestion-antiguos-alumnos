@@ -21,7 +21,9 @@
                 <td class="align-middle">{{ alumno.email }}</td>
                 <td class="align-middle"><img src="{{ asset(alumno.fotografia is null ? 'subidas/fotos/usuarios/defaultuser.jpg' : 'subidas/fotos/usuarios/' ~ alumno.fotografia) }}" style="width: 80px; height: 80px;"></td>
                 <td class="align-middle">
-                    <a role="button" href="{{ path('alumnos_show', {'id': alumno.id}) }}" class="btn btn-primary mb-1 mb-sm-1 mb-md-0">Ver</a>
+                    <a role="button" href="{{ path('alumnos_show', {'id': alumno.id}) }}" class="btn btn-primary mb-1 mb-sm-1 mb-md-0"><i class="fas fa-search"></i></a>
+                    <a role="button" href="{{ path('alumnos_pdf', {'id': alumno.id}) }}" class="btn btn-primary mb-1 mb-sm-1 mb-md-0"><i class="fas fa-file-pdf"></i></a>
+                    <a role="button" href="{{ path('mensaje_alumno', {'id': alumno.id}) }}" class="btn btn-primary mb-1 mb-sm-1 mb-md-0"><i class="fas fa-envelope"></i></a>
                 </td>
             </tr>
         {% endfor %}
