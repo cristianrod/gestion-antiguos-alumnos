@@ -1,77 +1,60 @@
-Symfony Standard Edition
-========================
+# Gestión Antiguos Alumnos
 
-**WARNING**: This distribution does not support Symfony 4. See the
-[Installing & Setting up the Symfony Framework][15] page to find a replacement
-that fits you best.
+Aplicación web para la gestión de antiguos alumnos.
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+Aplicación de PHP con Symfony 3.4
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+## Requisitos
 
-What's inside?
---------------
+* PHP 7.1.3 o superior.
+* Servidor web Apache2 o Nginx.
+* Sistema de gestión de Base de Datos compatible con Doctrine.
+* Composer.
+* npm/yarn.
 
-The Symfony Standard Edition is configured with the following defaults:
+### Desarrollado con
 
-  * An AppBundle you can use to start coding;
+* Symfony 3.4
+* Twig
+* Composer
+* Yarn/npm
+* jQuery
+* Bootstrap
+* Font Awesome 5
 
-  * Twig as the only configured template engine;
+### Instalación
 
-  * Doctrine ORM/DBAL;
+Para instalar las dependencias tendremos que seguir los siguientes pasos en la carpeta del proyecto:
 
-  * Swiftmailer;
+* Para las dependencias de PHP: ``` composer install ```
+* Para las dependencias de JS: ``` yarn (o npm) install ```
+* Para compilar los assets: ```yarn (o npm) run dev```
 
-  * Annotations enabled for everything.
+* Configuramos nuestro archivo ```parameters.yml``` con nuestros datos.
 
-It comes pre-configured with the following bundles:
+* Creamos la Base de Datos:
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+```
+php bin/console doctrine:database:create
+o
+php bin/console doctrine:schema:update --force (si necesitamos actualizarla en vez de crearla)
+```
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+* Y, una vez creada la Base de Datos, iniciamos la carga de datos (la primera vez):
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+```php bin/console doctrine:fixtures:load```
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+* Cuenta admin:
+```
+usuario: admin
+contraseña: admin
+```
+(se recomienda cambiar la contrasña de la cuenta admin)
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+## Autores
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+* **Cristian Rodríguez Ruiz** - [Github](https://github.com/cristianrod)
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+## Licencia
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
-[15]: https://symfony.com/doc/current/setup.html
+Este proyecto está licenciado bajo la licencia MIT - más información en el fichero [LICENSE.md](LICENSE.md).
