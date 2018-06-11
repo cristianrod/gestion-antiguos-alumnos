@@ -6,7 +6,7 @@ Aplicación de PHP con Symfony 3.4
 
 ## Requisitos
 
-* PHP 7.1.3 o superior.
+* PHP 5.5.9 o superior.
 * Servidor web Apache2 o Nginx.
 * Sistema de gestión de Base de Datos compatible con Doctrine.
 * Composer.
@@ -27,8 +27,6 @@ Aplicación de PHP con Symfony 3.4
 Para instalar las dependencias tendremos que seguir los siguientes pasos en la carpeta del proyecto:
 
 * Para las dependencias de PHP: ``` composer install ```
-* Para las dependencias de JS: ``` yarn (o npm) install ```
-* Para compilar los assets: ```yarn (o npm) run dev```
 
 * Configuramos nuestro archivo ```parameters.yml``` con nuestros datos.
 
@@ -57,4 +55,4 @@ contraseña: admin
 
 ## Licencia
 
-Este proyecto está licenciado bajo la licencia MIT - más información en el fichero [LICENSE.md](LICENSE.md).
+Este proyecto está licenciado bajo la licencia MIT - más información en el fichero [LICENSE.md](LICENSE).
