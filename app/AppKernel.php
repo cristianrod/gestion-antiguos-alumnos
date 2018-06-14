@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new FOS\CKEditorBundle\FOSCKEditorBundle(),
             new TFox\MpdfPortBundle\TFoxMpdfPortBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         ];
