@@ -118,7 +118,7 @@ class Usuario extends BaseUser
     private $fechaSubida;
 
     /**
-     * @ORM\OneToOne(targetEntity="Curriculum", mappedBy="alumno")
+     * @ORM\OneToOne(targetEntity="Curriculum", mappedBy="alumno", cascade={"persist", "remove"})
      */
     private $curriculum;
 
