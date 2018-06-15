@@ -47,7 +47,7 @@ php bin/console doctrine:schema:update --force (si necesitamos actualizarla en v
 usuario: admin
 contraseña: admin
 ```
-(se recomienda cambiar la contrasña de la cuenta admin)
+(se recomienda cambiar la contraseña de la cuenta admin)
 
 ## Autores
 
