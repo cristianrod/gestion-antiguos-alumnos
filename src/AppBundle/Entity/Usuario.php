@@ -20,6 +20,8 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\Table(name="usuarios")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  * @UniqueEntity("nif")
+ * @UniqueEntity("username")
+ * @UniqueEntity("email")
  * @Vich\Uploadable
  * Class Usuario
  * @package AppBundle\Entity

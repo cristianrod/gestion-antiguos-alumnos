@@ -101,6 +101,7 @@ easy_admin:
                 fields:
                     - { property: 'nif', label: 'NIF' }
                     - { property: 'nombre', label: 'Nombre' }
+                    - { property: 'username', label: 'Usuario' }
                     - { property: 'email', label: 'Email', type: 'email' }
                     - { property: 'movil', label: 'Movil', type: 'tel' }
                     - { property: 'enabled', label: 'Activo' }
