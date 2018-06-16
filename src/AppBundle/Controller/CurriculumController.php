@@ -31,7 +31,7 @@ class CurriculumController extends Controller
 
         $form = $this->createForm(CurriculumType::class, $curriculum)
             ->add('crearcv', SubmitType::class, [
-            'label' => 'Crear Curriculum',
+            'label' => 'Crear Currículum',
             'attr' => [
                 'class' => 'btn btn-primary'
             ]
@@ -65,7 +65,7 @@ class CurriculumController extends Controller
 
         $form = $this->createForm(CurriculumType::class, $curriculum)
             ->add('editarcv', SubmitType::class, [
-            'label' => 'Editar Curriculum',
+            'label' => 'Editar Currículum',
             'attr' => [
                 'class' => 'btn btn-primary'
             ]

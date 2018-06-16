@@ -91,7 +91,7 @@ easy_admin:
     design:
         menu:
             - { entity: 'Usuario', label: 'Usuarios', icon: 'user' }
-            - { entity: 'Curriculum', label: 'Curriculums', icon: 'file-text' }
+            - { entity: 'Curriculum', label: 'Currículums', icon: 'file-text' }
     entities:
         Usuario:
             class: AppBundle\Entity\Usuario
@@ -125,7 +125,7 @@ easy_admin:
                     - { property: 'apellido2', label: '2º Apellido' }
                     - { property: 'movil', label: 'Móvil' }
                     - { property: 'fotografia', label: 'Fotografía' }
-                    - { property: 'curriculum', label: 'Curriculum' }
+                    - { property: 'curriculum', label: 'Currículum' }
             form:
                 fields:
                     - { property: 'username', label: 'Usuario' }
@@ -151,7 +151,7 @@ easy_admin:
         Curriculum:
             class: AppBundle\Entity\Curriculum
             list:
-                title: 'Curriculums'
+                title: 'Currículums'
                 fields:
                     - { property: 'alumno', label: 'Usuario' }
                     - { property: 'direccion', label: 'Dirección' }
@@ -164,7 +164,7 @@ easy_admin:
                     - { name: 'show', label: 'Ver' }
                     - { name: 'delete', label: 'Borrar'}
             show:
-                title: 'Ver Curriculum'
+                title: 'Ver Currículum'
                 fields:
                     - { property: 'alumno', label: 'Alumno' }
                     - { property: 'direccion', label: 'Dirección' }
@@ -203,9 +203,9 @@ easy_admin:
                     - { property: 'puntuacion', label: 'Puntuación' }
                     - { property: 'sexo', label: 'Sexo', type: 'choice', type_options: { expanded: true, choices: { 'Hombre': 'Hombre', 'Mujer': 'Mujer' } }  }
             new:
-                title: 'Crear Curriculum'
+                title: 'Crear Currículum'
             edit:
-                title: 'Modificar Curriculum'
+                title: 'Modificar Currículum'
 
 fos_user:
     db_driver: orm
