@@ -26,6 +26,19 @@ class UsuarioRepository extends EntityRepository
         return $this->paginacion($query, $pagina);
     }
 
+    public function findAlumnoByUsuario(int $pagina, string $usuario, string $tipo)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->addSelect('a')
+            ->andWhere("a.{$tipo} = :usuario")
+            ->andWhere('a.esAlumno = true')
+            ->setParameter('usuario', $usuario)
+            ->orderBy('a.nombre', 'ASC')
+            ->getQuery()
+        ;
+        return $this->paginacion($query, $pagina);
+    }
+
     public function paginacion(Query $query, int $pagina)
     {
         $paginacion = new Pagerfanta(new DoctrineORMAdapter($query));
