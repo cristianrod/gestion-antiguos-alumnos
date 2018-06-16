@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}Inicio - Alumnos{% endblock %}
 {% block container %}
-    <form class="form-inline mb-4" action="{{ path('alumnos_index') }}" method="get">
+    <form class="form-inline mb-4 float-md-right" action="{{ path('alumnos_index') }}" method="get">
         <div class="form-group">
             <label for="exampleFormControlInput1" class="mr-2">Alumno: </label>
             <input type="text" class="form-control" name="a" id="exampleFormControlInput1" value="" placeholder="Alumno...">
